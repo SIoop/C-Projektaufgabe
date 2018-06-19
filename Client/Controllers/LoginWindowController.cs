@@ -7,21 +7,21 @@ namespace Client.Controllers
 {
     public class LoginWindowController
     {
-        private LoginWindowViewModel mViewModel;
-        private readonly UserServiceClient client = new UserServiceClient();
-        private LoginWindow view;
+        private LoginWindowViewModel _viewModel;
+        private readonly UserServiceClient _client = new UserServiceClient();
+        private LoginWindow _view;
 
         public void Initialize()
         {
-            mViewModel = new LoginWindowViewModel();
-            mViewModel.LoginCommand = new RelayCommand(ExecuteLoginCommand);
-            view = new LoginWindow {DataContext = mViewModel};
-            view.ShowDialog();
+            _viewModel = new LoginWindowViewModel();
+            _viewModel.LoginCommand = new RelayCommand(ExecuteLoginCommand);
+            _view = new LoginWindow {DataContext = _viewModel};
+            _view.ShowDialog();
         }
 
         private void ExecuteLoginCommand(object obj)
         {
-            var result = client.LoginUser(mViewModel.Username, view.LoginPasswordBox.Password);
+            var result = _client.LoginUser(_viewModel.Username, _view.LoginPasswordBox.Password);
 
             if (result == null)
             {
@@ -29,8 +29,9 @@ namespace Client.Controllers
             }
             else
             {
-                view.Close();
+                ApplicationData.User = result;
                 new MainWindowController().Initialize();
+                _view.Close();
             }
         }
     }
