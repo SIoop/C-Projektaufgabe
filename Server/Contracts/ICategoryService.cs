@@ -2,21 +2,22 @@
 using System.ServiceModel;
 using Models;
 
-namespace Server.Services
+namespace Server.Contracts
 {
     [ServiceContract]
-    public interface IUserService
+    public interface ICategoryService
     {
         [OperationContract]
-        User GetUser(int id);
+        List<Category> GetAll();
 
         [OperationContract]
-        List<User> GetAllUsers();
+        Category Get(int id);
 
         [OperationContract]
-        bool AddOrUpdateUser(User user);
+        bool Delete(Category category);
 
         [OperationContract]
-        bool DeleteUser(User user);
+        bool SaveOrUpdate(Category category);
+
     }
 }

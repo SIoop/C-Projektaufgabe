@@ -2,15 +2,14 @@
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
-using ISession = NHibernate.ISession;
 
-namespace Backend.Framework
+namespace Server.Framework
 {
     public static class NHibernateHelper
     {
         private static ISessionFactory _sessionFactory;
 
-        public static string DatabaseFile = "/Database/rateMe_filled.db3";
+        public static string DatabaseFile { get; set; }
 
         public static ISession OpenSession()
         {

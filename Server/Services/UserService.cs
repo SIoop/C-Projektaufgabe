@@ -5,30 +5,37 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using Models;
+using Server.Contracts;
+using Server.Framework;
 using Server.Managers;
 
 namespace Server.Services
 {
     public class UserService : IUserService
     {
-        public User GetUser(int id)
-        {
-            return id.FindUser();
-        }
+        private PersistenceManager<User> manager = new PersistenceManager<User>();
 
-        public List<User> GetAllUsers()
-        {
-            return UserExtensions.GetAllUsers();
-        }
+        public User GetUser(int id) => manager.Get(id);
 
-        public bool AddOrUpdateUser(User user)
-        {
-            return user.SaveOrUpdate();
-        }
+        public List<User> GetAllUsers() => manager.GetAll();
 
-        public bool DeleteUser(User user)
+        public bool AddOrUpdateUser(User user) => manager.SaveOrUpdate(user);
+
+        public bool DeleteUser(User user) => manager.Delete(user);
+
+        public User LoginUser(string username, string password)
         {
-            return user.Delete();
+            var users = manager.GetAll();
+            var result = users.Find(u => u.Username == username);
+            if (result == null) return result;
+            else
+            {
+                if (BCrypt.Net.BCrypt.Verify(password, result.Password))
+                {
+                    return result;
+                }
+                else return null;
+            }
         }
     }
 }
