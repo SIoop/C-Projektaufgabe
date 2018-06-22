@@ -1,8 +1,7 @@
-﻿
-using FluentNHibernate.Mapping;
+﻿using Backend.Mapping;
 using Models;
 
-namespace Backend.Mapping
+namespace Server.Mapping
 {
     public class CategoryMap : BaseMap<Category>
     {
@@ -11,6 +10,8 @@ namespace Backend.Mapping
             Table("Categories");
 
             Map(x => x.Name).Length(20).Not.Nullable();
+
+            HasMany(x => x.Items).KeyColumn("CategoryId").Cascade.All().Inverse();
         }
     }
 }

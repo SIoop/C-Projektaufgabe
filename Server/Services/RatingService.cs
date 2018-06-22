@@ -7,15 +7,7 @@ namespace Server.Services
 {
     public class RatingService : IRatingService
     {
-        private PersistenceManager<Rating> _manager = new PersistenceManager<Rating>();
-
-
-        public List<Rating> GetRatingsForItem(Item item)
-        {
-            var all = _manager.GetAll();
-            var ratings = all.FindAll(r => r.Item.Id.Equals(item.Id));
-            return ratings;
-        }
+        private readonly PersistenceManager<Rating> _manager = new PersistenceManager<Rating>();
 
         public bool DeleteRating(Rating rating) => _manager.Delete(rating);
 

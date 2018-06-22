@@ -8,9 +8,6 @@ namespace Server.Contracts
     public interface IRatingService
     {
         [OperationContract]
-        List<Rating> GetRatingsForItem(Item item);
-
-        [OperationContract]
         bool DeleteRating(Rating rating);
 
         [OperationContract]

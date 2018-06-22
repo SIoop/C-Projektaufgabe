@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0643794f-9bc5-4183-8660-b5928b308be3" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="09fe9d1f-5e12-4484-a233-d210ecbc41ed" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -9,7 +9,9 @@
     <GenerateInternalTypes>false</GenerateInternalTypes>
     <GenerateMessageContracts>false</GenerateMessageContracts>
     <NamespaceMappings />
-    <CollectionMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
@@ -22,10 +24,10 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/RateThisStuff/RatingService/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="c2f86fbb-2489-432b-aad9-762483c70445" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RateThisStuff/RatingService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="c5966b4d-b070-456e-aa27-a761081db054" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RateThisStuff/RatingService/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="c2574a18-ecae-4326-8daa-898029fc46ff" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RateThisStuff/RatingService/mex" />
-    <MetadataFile FileName="Models.xsd" MetadataType="Schema" ID="4325741f-c59b-4fed-acd9-d9773f012efb" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RateThisStuff/RatingService/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="e5287722-a3dd-412c-9706-7d9ef4354c9c" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RateThisStuff/RatingService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="edbb024a-414c-4576-b8d4-972b13d4b426" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RateThisStuff/RatingService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="12155b24-25c7-4cc0-bb50-1cf0ab05b86d" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RateThisStuff/RatingService/mex" />
+    <MetadataFile FileName="Models.xsd" MetadataType="Schema" ID="69eda462-c4d8-462d-9568-901e37c3dbec" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RateThisStuff/RatingService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -8,8 +8,9 @@ namespace Backend.Mapping
     {
         public BaseMap()
         {
-            Id(x => x.Id);
+            Id(x => x.Id).GeneratedBy.Native();
 
+            OptimisticLock.Version();
             Version(x => x.Version);
         }
     }

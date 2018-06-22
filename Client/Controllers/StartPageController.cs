@@ -8,19 +8,52 @@ using Client.Views;
 
 namespace Client.Controllers
 {
-    public class StartPageController
+    public class StartPageController : PageControllerBase
     {
         private StartPageViewModel _viewModel;
         private readonly CategoryServiceClient _client = new CategoryServiceClient();
 
-        public Page Initialize()
+        public void Initialize()
         {
-            _viewModel = new StartPageViewModel();
-            _viewModel.Categories = _client.GetAll().ToList();
+            _viewModel = new StartPageViewModel
+            {
+                Categories = _client.GetAll().ToList(),
+                CategorySelectedCommand = new RelayCommand(ExecuteCategorySelectedCommand)
+            };
+
+            Page = new StartPage { DataContext = _viewModel };
+        }
+
+        private void ExecuteCategorySelectedCommand(object obj)
+        {
+            ApplicationData.Category = _viewModel.SelectedCategory;
+            if (MainWindowNavigator.UserPages.Count==1)
+            {
+                MainWindowNavigator.EnableAllUserPages();
+            }
+            MainWindowNavigator.NavigateTo(MainWindowNavigator.UserPageControllers[1].Page.Title);
+        }
+
+        public Page Page { get; set; }
+        public (bool, bool, bool, bool) ActiveButtons { get; set; }
+        public void NewButtonPressed()
+        {
             
-            var page = new StartPage();
-            page.DataContext = _viewModel;
-            return page;
+        }
+
+        public void EditButtonPressed()
+        {
+            
+        }
+
+        public void SaveButtonPressed()
+        {
+            
+        }
+
+        public void DeleteButtonPressed()
+        {
+            
         }
     }
 }

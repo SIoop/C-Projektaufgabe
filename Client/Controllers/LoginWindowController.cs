@@ -5,7 +5,7 @@ using Client.Views;
 
 namespace Client.Controllers
 {
-    public class LoginWindowController
+    public class LoginWindowController : ControllerBase
     {
         private LoginWindowViewModel _viewModel;
         private readonly UserServiceClient _client = new UserServiceClient();
@@ -13,15 +13,14 @@ namespace Client.Controllers
 
         public void Initialize()
         {
-            _viewModel = new LoginWindowViewModel();
-            _viewModel.LoginCommand = new RelayCommand(ExecuteLoginCommand);
+            _viewModel = new LoginWindowViewModel {LoginCommand = new RelayCommand(ExecuteLoginCommand)};
             _view = new LoginWindow {DataContext = _viewModel};
             _view.ShowDialog();
         }
 
-        private void ExecuteLoginCommand(object obj)
+        private async void ExecuteLoginCommand(object obj)
         {
-            var result = _client.LoginUser(_viewModel.Username, _view.LoginPasswordBox.Password);
+            var result = await _client.LoginUserAsync(_viewModel.Username, _view.LoginPasswordBox.Password);
 
             if (result == null)
             {

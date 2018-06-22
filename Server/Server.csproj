@@ -94,9 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <Resource Include="Database\rateMe.db3">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <None Include="Database\rateMe.db3" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

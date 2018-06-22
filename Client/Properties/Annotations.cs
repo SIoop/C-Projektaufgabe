@@ -147,7 +147,7 @@ namespace Client.Annotations
   /// <summary>
   /// Indicates that the method is contained in a type that implements
   /// <c>System.ComponentModel.INotifyPropertyChanged</c> interface and this method
-  /// is used to notify that some property value changed.
+  /// is used to Notify that some property value changed.
   /// </summary>
   /// <remarks>
   /// The method should be non-static and conform to one of the supported signatures:

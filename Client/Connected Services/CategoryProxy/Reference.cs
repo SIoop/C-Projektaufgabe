@@ -9,114 +9,35 @@
 //------------------------------------------------------------------------------
 
 namespace Client.CategoryProxy {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Category", Namespace="http://schemas.datacontract.org/2004/07/Models")]
-    [System.SerializableAttribute()]
-    public partial class Category : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int VersionField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Version {
-            get {
-                return this.VersionField;
-            }
-            set {
-                if ((this.VersionField.Equals(value) != true)) {
-                    this.VersionField = value;
-                    this.RaisePropertyChanged("Version");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CategoryProxy.ICategoryService")]
     public interface ICategoryService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/GetAll", ReplyAction="http://tempuri.org/ICategoryService/GetAllResponse")]
-        Client.CategoryProxy.Category[] GetAll();
+        System.Collections.Generic.List<Models.Category> GetAll();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/GetAll", ReplyAction="http://tempuri.org/ICategoryService/GetAllResponse")]
-        System.Threading.Tasks.Task<Client.CategoryProxy.Category[]> GetAllAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Category>> GetAllAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/Get", ReplyAction="http://tempuri.org/ICategoryService/GetResponse")]
-        Client.CategoryProxy.Category Get(int id);
+        Models.Category Get(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/Get", ReplyAction="http://tempuri.org/ICategoryService/GetResponse")]
-        System.Threading.Tasks.Task<Client.CategoryProxy.Category> GetAsync(int id);
+        System.Threading.Tasks.Task<Models.Category> GetAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/Delete", ReplyAction="http://tempuri.org/ICategoryService/DeleteResponse")]
-        bool Delete(Client.CategoryProxy.Category category);
+        bool Delete(Models.Category category);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/Delete", ReplyAction="http://tempuri.org/ICategoryService/DeleteResponse")]
-        System.Threading.Tasks.Task<bool> DeleteAsync(Client.CategoryProxy.Category category);
+        System.Threading.Tasks.Task<bool> DeleteAsync(Models.Category category);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/SaveOrUpdate", ReplyAction="http://tempuri.org/ICategoryService/SaveOrUpdateResponse")]
-        bool SaveOrUpdate(Client.CategoryProxy.Category category);
+        bool SaveOrUpdate(Models.Category category);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/SaveOrUpdate", ReplyAction="http://tempuri.org/ICategoryService/SaveOrUpdateResponse")]
-        System.Threading.Tasks.Task<bool> SaveOrUpdateAsync(Client.CategoryProxy.Category category);
+        System.Threading.Tasks.Task<bool> SaveOrUpdateAsync(Models.Category category);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -146,35 +67,35 @@ namespace Client.CategoryProxy {
                 base(binding, remoteAddress) {
         }
         
-        public Client.CategoryProxy.Category[] GetAll() {
+        public System.Collections.Generic.List<Models.Category> GetAll() {
             return base.Channel.GetAll();
         }
         
-        public System.Threading.Tasks.Task<Client.CategoryProxy.Category[]> GetAllAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Category>> GetAllAsync() {
             return base.Channel.GetAllAsync();
         }
         
-        public Client.CategoryProxy.Category Get(int id) {
+        public Models.Category Get(int id) {
             return base.Channel.Get(id);
         }
         
-        public System.Threading.Tasks.Task<Client.CategoryProxy.Category> GetAsync(int id) {
+        public System.Threading.Tasks.Task<Models.Category> GetAsync(int id) {
             return base.Channel.GetAsync(id);
         }
         
-        public bool Delete(Client.CategoryProxy.Category category) {
+        public bool Delete(Models.Category category) {
             return base.Channel.Delete(category);
         }
         
-        public System.Threading.Tasks.Task<bool> DeleteAsync(Client.CategoryProxy.Category category) {
+        public System.Threading.Tasks.Task<bool> DeleteAsync(Models.Category category) {
             return base.Channel.DeleteAsync(category);
         }
         
-        public bool SaveOrUpdate(Client.CategoryProxy.Category category) {
+        public bool SaveOrUpdate(Models.Category category) {
             return base.Channel.SaveOrUpdate(category);
         }
         
-        public System.Threading.Tasks.Task<bool> SaveOrUpdateAsync(Client.CategoryProxy.Category category) {
+        public System.Threading.Tasks.Task<bool> SaveOrUpdateAsync(Models.Category category) {
             return base.Channel.SaveOrUpdateAsync(category);
         }
     }

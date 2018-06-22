@@ -16,5 +16,8 @@ namespace Server.Contracts
         [OperationContract]
         bool SaveOrUpdate(Item item);
 
+        [OperationContract]
+        List<RatedItem> GetRatedItemsByCategory(Category cat);
+
     }
 }

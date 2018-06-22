@@ -9,184 +9,41 @@
 //------------------------------------------------------------------------------
 
 namespace Client.UserProxy {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/Models")]
-    [System.SerializableAttribute()]
-    public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstnameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsAdminField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastnameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PasswordField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UsernameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int VersionField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Firstname {
-            get {
-                return this.FirstnameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstnameField, value) != true)) {
-                    this.FirstnameField = value;
-                    this.RaisePropertyChanged("Firstname");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsAdmin {
-            get {
-                return this.IsAdminField;
-            }
-            set {
-                if ((this.IsAdminField.Equals(value) != true)) {
-                    this.IsAdminField = value;
-                    this.RaisePropertyChanged("IsAdmin");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Lastname {
-            get {
-                return this.LastnameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastnameField, value) != true)) {
-                    this.LastnameField = value;
-                    this.RaisePropertyChanged("Lastname");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Password {
-            get {
-                return this.PasswordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
-                    this.PasswordField = value;
-                    this.RaisePropertyChanged("Password");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Username {
-            get {
-                return this.UsernameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
-                    this.UsernameField = value;
-                    this.RaisePropertyChanged("Username");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Version {
-            get {
-                return this.VersionField;
-            }
-            set {
-                if ((this.VersionField.Equals(value) != true)) {
-                    this.VersionField = value;
-                    this.RaisePropertyChanged("Version");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserProxy.IUserService")]
     public interface IUserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUser", ReplyAction="http://tempuri.org/IUserService/GetUserResponse")]
-        Client.UserProxy.User GetUser(int id);
+        Models.User GetUser(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUser", ReplyAction="http://tempuri.org/IUserService/GetUserResponse")]
-        System.Threading.Tasks.Task<Client.UserProxy.User> GetUserAsync(int id);
+        System.Threading.Tasks.Task<Models.User> GetUserAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetAllUsers", ReplyAction="http://tempuri.org/IUserService/GetAllUsersResponse")]
-        Client.UserProxy.User[] GetAllUsers();
+        System.Collections.Generic.List<Models.User> GetAllUsers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetAllUsers", ReplyAction="http://tempuri.org/IUserService/GetAllUsersResponse")]
-        System.Threading.Tasks.Task<Client.UserProxy.User[]> GetAllUsersAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.User>> GetAllUsersAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddOrUpdateUser", ReplyAction="http://tempuri.org/IUserService/AddOrUpdateUserResponse")]
-        bool AddOrUpdateUser(Client.UserProxy.User user);
+        bool AddOrUpdateUser(Models.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddOrUpdateUser", ReplyAction="http://tempuri.org/IUserService/AddOrUpdateUserResponse")]
-        System.Threading.Tasks.Task<bool> AddOrUpdateUserAsync(Client.UserProxy.User user);
+        System.Threading.Tasks.Task<bool> AddOrUpdateUserAsync(Models.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/DeleteUser", ReplyAction="http://tempuri.org/IUserService/DeleteUserResponse")]
-        bool DeleteUser(Client.UserProxy.User user);
+        bool DeleteUser(Models.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/DeleteUser", ReplyAction="http://tempuri.org/IUserService/DeleteUserResponse")]
-        System.Threading.Tasks.Task<bool> DeleteUserAsync(Client.UserProxy.User user);
+        System.Threading.Tasks.Task<bool> DeleteUserAsync(Models.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/LoginUser", ReplyAction="http://tempuri.org/IUserService/LoginUserResponse")]
-        Client.UserProxy.User LoginUser(string username, string password);
+        Models.User LoginUser(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/LoginUser", ReplyAction="http://tempuri.org/IUserService/LoginUserResponse")]
-        System.Threading.Tasks.Task<Client.UserProxy.User> LoginUserAsync(string username, string password);
+        System.Threading.Tasks.Task<Models.User> LoginUserAsync(string username, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -216,43 +73,43 @@ namespace Client.UserProxy {
                 base(binding, remoteAddress) {
         }
         
-        public Client.UserProxy.User GetUser(int id) {
+        public Models.User GetUser(int id) {
             return base.Channel.GetUser(id);
         }
         
-        public System.Threading.Tasks.Task<Client.UserProxy.User> GetUserAsync(int id) {
+        public System.Threading.Tasks.Task<Models.User> GetUserAsync(int id) {
             return base.Channel.GetUserAsync(id);
         }
         
-        public Client.UserProxy.User[] GetAllUsers() {
+        public System.Collections.Generic.List<Models.User> GetAllUsers() {
             return base.Channel.GetAllUsers();
         }
         
-        public System.Threading.Tasks.Task<Client.UserProxy.User[]> GetAllUsersAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.User>> GetAllUsersAsync() {
             return base.Channel.GetAllUsersAsync();
         }
         
-        public bool AddOrUpdateUser(Client.UserProxy.User user) {
+        public bool AddOrUpdateUser(Models.User user) {
             return base.Channel.AddOrUpdateUser(user);
         }
         
-        public System.Threading.Tasks.Task<bool> AddOrUpdateUserAsync(Client.UserProxy.User user) {
+        public System.Threading.Tasks.Task<bool> AddOrUpdateUserAsync(Models.User user) {
             return base.Channel.AddOrUpdateUserAsync(user);
         }
         
-        public bool DeleteUser(Client.UserProxy.User user) {
+        public bool DeleteUser(Models.User user) {
             return base.Channel.DeleteUser(user);
         }
         
-        public System.Threading.Tasks.Task<bool> DeleteUserAsync(Client.UserProxy.User user) {
+        public System.Threading.Tasks.Task<bool> DeleteUserAsync(Models.User user) {
             return base.Channel.DeleteUserAsync(user);
         }
         
-        public Client.UserProxy.User LoginUser(string username, string password) {
+        public Models.User LoginUser(string username, string password) {
             return base.Channel.LoginUser(username, password);
         }
         
-        public System.Threading.Tasks.Task<Client.UserProxy.User> LoginUserAsync(string username, string password) {
+        public System.Threading.Tasks.Task<Models.User> LoginUserAsync(string username, string password) {
             return base.Channel.LoginUserAsync(username, password);
         }
     }

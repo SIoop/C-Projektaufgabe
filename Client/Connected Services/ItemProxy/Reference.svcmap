@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5576351f-0e66-44dd-8bf9-6ff069c5ff33" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="754f782f-2098-4e0f-85bb-36db124978c5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -9,7 +9,9 @@
     <GenerateInternalTypes>false</GenerateInternalTypes>
     <GenerateMessageContracts>false</GenerateMessageContracts>
     <NamespaceMappings />
-    <CollectionMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
@@ -22,10 +24,10 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/RateThisStuff/ItemService/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="cfda0519-9aab-4758-9b5c-f0da2dbdbce8" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RateThisStuff/ItemService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="d8ba2f98-ae1d-4f1e-a0f0-3335bfb8aaf4" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RateThisStuff/ItemService/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="d25cd779-459e-4379-93bb-2706bc2324a9" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RateThisStuff/ItemService/mex" />
-    <MetadataFile FileName="Models.xsd" MetadataType="Schema" ID="5ef1734b-f8dd-42ad-a470-f7ff928d3ac6" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RateThisStuff/ItemService/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="b9747dec-f260-426a-840e-1b257c240cef" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RateThisStuff/ItemService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="bfcce28f-e9fa-4542-b44d-9123ac80e11b" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RateThisStuff/ItemService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="1778a349-66cf-48db-9e92-2af5526c2d44" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RateThisStuff/ItemService/mex" />
+    <MetadataFile FileName="Models.xsd" MetadataType="Schema" ID="1db50f19-97f6-4941-b895-ca420196bdee" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RateThisStuff/ItemService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

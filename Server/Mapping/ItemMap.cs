@@ -1,6 +1,7 @@
-﻿using Models;
+﻿using Backend.Mapping;
+using Models;
 
-namespace Backend.Mapping
+namespace Server.Mapping
 {
     public class ItemMap : BaseMap<Item>
     {
@@ -10,7 +11,7 @@ namespace Backend.Mapping
 
             Map(x => x.Name).Length(100).Not.Nullable();
 
-            References(x => x.Category).Column("CatgoryId").Not.Nullable().Cascade.All();
+            HasMany(x => x.Ratings).KeyColumn("ItemId").Cascade.All().Inverse();
         }
     }
 }

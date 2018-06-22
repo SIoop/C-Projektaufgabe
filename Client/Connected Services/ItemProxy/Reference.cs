@@ -9,201 +9,35 @@
 //------------------------------------------------------------------------------
 
 namespace Client.ItemProxy {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Item", Namespace="http://schemas.datacontract.org/2004/07/Models")]
-    [System.SerializableAttribute()]
-    public partial class Item : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Client.ItemProxy.Category CategoryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int VersionField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Client.ItemProxy.Category Category {
-            get {
-                return this.CategoryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
-                    this.CategoryField = value;
-                    this.RaisePropertyChanged("Category");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Version {
-            get {
-                return this.VersionField;
-            }
-            set {
-                if ((this.VersionField.Equals(value) != true)) {
-                    this.VersionField = value;
-                    this.RaisePropertyChanged("Version");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Category", Namespace="http://schemas.datacontract.org/2004/07/Models")]
-    [System.SerializableAttribute()]
-    public partial class Category : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int VersionField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Version {
-            get {
-                return this.VersionField;
-            }
-            set {
-                if ((this.VersionField.Equals(value) != true)) {
-                    this.VersionField = value;
-                    this.RaisePropertyChanged("Version");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ItemProxy.IItemService")]
     public interface IItemService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IItemService/GetAll", ReplyAction="http://tempuri.org/IItemService/GetAllResponse")]
-        Client.ItemProxy.Item[] GetAll();
+        System.Collections.Generic.List<Models.Item> GetAll();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IItemService/GetAll", ReplyAction="http://tempuri.org/IItemService/GetAllResponse")]
-        System.Threading.Tasks.Task<Client.ItemProxy.Item[]> GetAllAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Item>> GetAllAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IItemService/Delete", ReplyAction="http://tempuri.org/IItemService/DeleteResponse")]
-        bool Delete(Client.ItemProxy.Item item);
+        bool Delete(Models.Item item);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IItemService/Delete", ReplyAction="http://tempuri.org/IItemService/DeleteResponse")]
-        System.Threading.Tasks.Task<bool> DeleteAsync(Client.ItemProxy.Item item);
+        System.Threading.Tasks.Task<bool> DeleteAsync(Models.Item item);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IItemService/SaveOrUpdate", ReplyAction="http://tempuri.org/IItemService/SaveOrUpdateResponse")]
-        bool SaveOrUpdate(Client.ItemProxy.Item item);
+        bool SaveOrUpdate(Models.Item item);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IItemService/SaveOrUpdate", ReplyAction="http://tempuri.org/IItemService/SaveOrUpdateResponse")]
-        System.Threading.Tasks.Task<bool> SaveOrUpdateAsync(Client.ItemProxy.Item item);
+        System.Threading.Tasks.Task<bool> SaveOrUpdateAsync(Models.Item item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IItemService/GetRatedItemsByCategory", ReplyAction="http://tempuri.org/IItemService/GetRatedItemsByCategoryResponse")]
+        System.Collections.Generic.List<Models.RatedItem> GetRatedItemsByCategory(Models.Category cat);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IItemService/GetRatedItemsByCategory", ReplyAction="http://tempuri.org/IItemService/GetRatedItemsByCategoryResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.RatedItem>> GetRatedItemsByCategoryAsync(Models.Category cat);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -233,28 +67,36 @@ namespace Client.ItemProxy {
                 base(binding, remoteAddress) {
         }
         
-        public Client.ItemProxy.Item[] GetAll() {
+        public System.Collections.Generic.List<Models.Item> GetAll() {
             return base.Channel.GetAll();
         }
         
-        public System.Threading.Tasks.Task<Client.ItemProxy.Item[]> GetAllAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Item>> GetAllAsync() {
             return base.Channel.GetAllAsync();
         }
         
-        public bool Delete(Client.ItemProxy.Item item) {
+        public bool Delete(Models.Item item) {
             return base.Channel.Delete(item);
         }
         
-        public System.Threading.Tasks.Task<bool> DeleteAsync(Client.ItemProxy.Item item) {
+        public System.Threading.Tasks.Task<bool> DeleteAsync(Models.Item item) {
             return base.Channel.DeleteAsync(item);
         }
         
-        public bool SaveOrUpdate(Client.ItemProxy.Item item) {
+        public bool SaveOrUpdate(Models.Item item) {
             return base.Channel.SaveOrUpdate(item);
         }
         
-        public System.Threading.Tasks.Task<bool> SaveOrUpdateAsync(Client.ItemProxy.Item item) {
+        public System.Threading.Tasks.Task<bool> SaveOrUpdateAsync(Models.Item item) {
             return base.Channel.SaveOrUpdateAsync(item);
+        }
+        
+        public System.Collections.Generic.List<Models.RatedItem> GetRatedItemsByCategory(Models.Category cat) {
+            return base.Channel.GetRatedItemsByCategory(cat);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.RatedItem>> GetRatedItemsByCategoryAsync(Models.Category cat) {
+            return base.Channel.GetRatedItemsByCategoryAsync(cat);
         }
     }
 }
