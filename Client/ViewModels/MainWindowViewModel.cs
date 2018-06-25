@@ -55,6 +55,19 @@ namespace Client.ViewModels
             }
         }
 
+        private ObservableCollection<Page> _adminPages;
+
+        public ObservableCollection<Page> AdminPages
+        {
+            get => _adminPages;
+            set
+            {
+                _adminPages = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         private ICommand _newCommand;
 
         public ICommand NewCommand

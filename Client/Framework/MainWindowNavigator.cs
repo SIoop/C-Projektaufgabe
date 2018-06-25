@@ -19,21 +19,21 @@ namespace Client.Framework
 
         public static ObservableCollection<Page> UserPages = new ObservableCollection<Page>();
         public static Page StartPage;
-        public static List<Page> AdminPages;
+        public static ObservableCollection<Page> AdminPages;
 
         public static List<NavigationSubscriber> NavigationSubscribers = new List<NavigationSubscriber>();
 
-        public static (ObservableCollection<Page>, List<Page>) InitializePages()
+        public static (ObservableCollection<Page>, ObservableCollection<Page>) InitializePages()
         {
             UserPageControllers[0].Initialize();
             UserPages.Add(UserPageControllers[0].Page);
             StartPage = UserPages[0];
 
-            AdminPages = AdminPageControllers.Select(c =>
+            AdminPages = new ObservableCollection<Page>(AdminPageControllers.ToList().Select(c =>
             {
                 c.Initialize();
                 return c.Page;
-            }).ToList();
+            }).ToList());
 
             return (UserPages, AdminPages);
         }
@@ -41,7 +41,7 @@ namespace Client.Framework
         public static void NavigateTo(string page)
         {
             var userPage = UserPages.ToList().Find(p => p.Title == page);
-            var adminPage = AdminPages.Find(p => p.Title == page);
+            var adminPage = AdminPages.ToList().Find(p => p.Title == page);
 
 
             var foundPage = userPage ?? adminPage;

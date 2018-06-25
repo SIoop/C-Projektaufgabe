@@ -44,8 +44,8 @@
                         <TextBox Text="{Binding SelectedItem.Name, Mode=TwoWay}" IsReadOnly="{Binding EditMode}" TextAlignment="Center" Width="300" FontSize="20"
                                  Background="#EEEFFF" />
                     </StackPanel>
-                    <Button Margin="15" Width="300" FontSize="20" BorderBrush="#9AA5E4" Background="#EEEFFF">Bewerten!</Button>
-                    <Button Margin="15" FontSize="20" Width="300" BorderBrush="#9AA5E4" Background="#EEEFFF">Bewertung entfernen!</Button>
+                    <Button Margin="15" Width="300" FontSize="20" BorderBrush="#9AA5E4" Background="#EEEFFF" Command="{Binding RateCommand}">Bewerten!</Button>
+                    <Button Margin="15" FontSize="20" Width="300" BorderBrush="#9AA5E4" Background="#EEEFFF" Command="{Binding DeleteRatingCommand}">Bewertung entfernen!</Button>
                 </StackPanel></Border>
             <Border Grid.Column="1" BorderBrush="#1E59B2" BorderThickness="1">
                 <ListBox ItemsSource="{Binding SelectedItem.Ratings}" HorizontalContentAlignment="Stretch" BorderThickness="0">

@@ -23,6 +23,8 @@ namespace Client.Controllers
         public void Initialize()
         {
             _viewModel.SelectionChange = new RelayCommand(SelectionChanged);
+            _viewModel.RateCommand = new RelayCommand(ExecuteRateCommand);
+            _viewModel.DeleteRatingCommand = new RelayCommand(ExecuteDeleteRatingCommand);
             Page = new ItemsPage {DataContext = _viewModel};
             LoadItems();
             MainWindowNavigator.NavigationSubscribers.Add(this);
@@ -36,6 +38,22 @@ namespace Client.Controllers
                 _viewModel.Items = ApplicationData.Category.Items.ToList();
                 _viewModel.SelectedItem = null;
             }
+        }
+
+        private void ExecuteRateCommand(object obj)
+        {
+            RateWindowController con = new RateWindowController();
+            var item = con.Initialize();
+            if (item != null)
+            {
+                var list = new List<Rating>(_viewModel.SelectedItem.Ratings) {item};
+                _viewModel.SelectedItem.Ratings = list;
+            }
+        }
+
+        private void ExecuteDeleteRatingCommand(object obj)
+        {
+           
         }
 
         public void Notify(string navigationTarget)

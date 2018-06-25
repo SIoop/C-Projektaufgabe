@@ -29,8 +29,9 @@ namespace Client.Controllers
             else
             {
                 ApplicationData.User = result;
+                _view.Hide();
                 new MainWindowController().Initialize();
-                _view.Close();
+                _view.Show();
             }
         }
     }

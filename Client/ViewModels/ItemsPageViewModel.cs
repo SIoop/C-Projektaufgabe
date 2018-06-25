@@ -58,6 +58,29 @@ namespace Client.ViewModels
             }
         }
 
+        private ICommand _rateCommand;
+
+        public ICommand RateCommand
+        {
+            get => _rateCommand;
+            set
+            {
+                _rateCommand = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ICommand _deleteRatingCommand;
+
+        public ICommand DeleteRatingCommand
+        {
+            get => _deleteRatingCommand;
+            set
+            {
+                _deleteRatingCommand = value;
+                OnPropertyChanged();
+            }
+        }
 
     }
 }

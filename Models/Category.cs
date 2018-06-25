@@ -31,7 +31,6 @@ namespace Models
             {
                 var hashCode = Id;
                 hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ Version;
                 return hashCode;
             }
         }

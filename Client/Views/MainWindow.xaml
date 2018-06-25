@@ -4,14 +4,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:ie="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-        xmlns:local="clr-namespace:Client.Views"
         mc:Ignorable="d"
         d:DesignHeight="450" d:DesignWidth="800"
         Title="Rate This Stuff">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
-        <BlurEffect xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Key="filter6084-7" Radius="2"/>
-        <BlurEffect xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Key="filter6102-8" Radius="1"/>
     </Window.Resources>
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -23,7 +20,8 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="3.5*" />
         </Grid.ColumnDefinitions>
-        <Frame Grid.Column="1" Grid.Row="2" Name="NavigationFrame" Margin="5" BorderBrush="#9AA5E4" BorderThickness="2" NavigationUIVisibility="Hidden"/>
+        <Frame Grid.Column="1" Grid.Row="2" Name="NavigationFrame" Margin="5" BorderBrush="#9AA5E4" BorderThickness="2"
+               NavigationUIVisibility="Hidden" />
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical">
             <Rectangle VerticalAlignment="Stretch" Margin="2" Stroke="#1E59B2" />
         </StackPanel>
@@ -54,64 +52,93 @@
             </Button>
         </WrapPanel>
         <StackPanel Grid.Row="2" Grid.Column="0" Margin="5">
-            <ListBox SelectedIndex="0" FontSize="15" SelectedItem="{Binding SelectedPage}" ItemsSource="{Binding UserPages}" Name="UserNavListbox">
+            <ListBox SelectedIndex="0" FontSize="15" SelectedValue="{Binding SelectedPage}"
+                     ItemsSource="{Binding UserPages}" Name="UserNavListbox">
                 <ie:Interaction.Triggers>
-                    <ie:EventTrigger EventName="MouseUp">
-                        <ie:InvokeCommandAction Command="{Binding NavChange}"></ie:InvokeCommandAction>
+                    <ie:EventTrigger EventName="SelectionChanged">
+                        <ie:InvokeCommandAction Command="{Binding NavChange}" />
                     </ie:EventTrigger>
                 </ie:Interaction.Triggers>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Title}" Visibility="{Binding IsEnabled, Converter={StaticResource BoolToVisConverter}}"></TextBlock>
+                        <TextBlock Text="{Binding Title}"
+                                   Visibility="{Binding IsEnabled, Converter={StaticResource BoolToVisConverter}}" />
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <TextBlock FontSize="18" Background="#EEEFFF" TextAlignment="Center" Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVisConverter}}">Administration</TextBlock>
-            <ListBox Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVisConverter}}">
-                <ListBoxItem FontSize="15">Benutzerverwaltung</ListBoxItem>
-                <ListBoxItem FontSize="15">Kategorieverwaltung</ListBoxItem>
+            <TextBlock FontSize="18" Background="#EEEFFF" TextAlignment="Center"
+                       Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVisConverter}}">
+                Administration
+            </TextBlock>
+            <ListBox Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVisConverter}}" FontSize="15"
+                     ItemsSource="{Binding AdminPages}" SelectedValue="{Binding SelectedPage}">
+                <ie:Interaction.Triggers>
+                    <ie:EventTrigger EventName="SelectionChanged">
+                        <ie:InvokeCommandAction Command="{Binding NavChange}" />
+                    </ie:EventTrigger>
+                </ie:Interaction.Triggers>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Title}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
         </StackPanel>
 
 
-        <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform" Grid.Row="0" Grid.Column="0">
-            <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Name="SVGRoot" Width="200" Height="200">
+        <Viewbox Stretch="Uniform" Grid.Row="0" Grid.Column="0">
+            <Canvas Name="SVGRoot" Width="200" Height="200">
                 <Canvas.RenderTransform>
-                    <TranslateTransform X="0" Y="0"/>
+                    <TranslateTransform X="0" Y="0" />
                 </Canvas.RenderTransform>
                 <Canvas.Resources>
-                    <BlurEffect xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Key="filter6084" Radius="2"/>
-                    <BlurEffect xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Key="filter6102" Radius="1"/>
-                    <BlurEffect xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Key="filter6084-7" Radius="2"/>
-                    <BlurEffect xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Key="filter6102-8" Radius="1"/>
+                    <BlurEffect x:Key="filter6084" Radius="2" />
+                    <BlurEffect x:Key="filter6102" Radius="1" />
+                    <BlurEffect x:Key="filter6084-7" Radius="2" />
+                    <BlurEffect x:Key="filter6102-8" Radius="1" />
                 </Canvas.Resources>
-                <!--Unknown tag: sodipodi:namedview-->
-                <!--Unknown tag: metadata-->
                 <Canvas Name="layer1">
                     <Canvas Name="g6108">
-                        <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path5255" Fill="#FF9AA5E4" StrokeThickness="0" Stroke="#FF000000" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Effect="{StaticResource filter6084}" Data="M 1e-6 58.88832 98.04687 59.375 49.8271 0 Z"/>
-                        <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path6088" Fill="#FF9AA5E4" StrokeThickness="1" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Effect="{StaticResource filter6102}" Data="m 35.546875 107.42188 26.5625 -0.39063 L 62.5 54.6875 H 36.71875 Z"/>
+                        <Path Name="path5255" Fill="#FF9AA5E4" StrokeThickness="0" Stroke="#FF000000"
+                              StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat"
+                              StrokeEndLineCap="Flat" Effect="{StaticResource filter6084}"
+                              Data="M 1e-6 58.88832 98.04687 59.375 49.8271 0 Z" />
+                        <Path Name="path6088" Fill="#FF9AA5E4" StrokeThickness="1" StrokeLineJoin="Miter"
+                              StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Effect="{StaticResource filter6102}"
+                              Data="m 35.546875 107.42188 26.5625 -0.39063 L 62.5 54.6875 H 36.71875 Z" />
                     </Canvas>
                     <Canvas Name="g61081" Opacity="1">
-                        <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path52555" Fill="#FFFF9D4B" StrokeThickness="0" Stroke="#FF000000" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Effect="{StaticResource filter6084-7}" Data="M 1e-6 58.88832 98.04687 59.375 49.8271 0 Z"/>
-                        <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path60889" Fill="#FFFF9D4B" StrokeThickness="1" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Effect="{StaticResource filter6102-8}" Data="m 35.546875 107.42188 26.5625 -0.39063 L 62.5 54.6875 H 36.71875 Z"/>
-                        <Path x:Name="path52555_Copy" Fill="#9AA5E4" StrokeThickness="0" Stroke="#FF000000" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Effect="{StaticResource filter6084-7}" Data="M 1e-6 58.88832 98.04687 59.375 49.8271 0 Z" Canvas.Left="92.761" Canvas.Top="83.381" RenderTransformOrigin="0.5,0.5">
+                        <Path Name="path52555" Fill="#FFFF9D4B" StrokeThickness="0" Stroke="#FF000000"
+                              StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat"
+                              StrokeEndLineCap="Flat" Effect="{StaticResource filter6084-7}"
+                              Data="M 1e-6 58.88832 98.04687 59.375 49.8271 0 Z" />
+                        <Path Name="path60889" Fill="#FFFF9D4B" StrokeThickness="1" StrokeLineJoin="Miter"
+                              StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Effect="{StaticResource filter6102-8}"
+                              Data="m 35.546875 107.42188 26.5625 -0.39063 L 62.5 54.6875 H 36.71875 Z" />
+                        <Path x:Name="path52555_Copy" Fill="#9AA5E4" StrokeThickness="0" Stroke="#FF000000"
+                              StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat"
+                              StrokeEndLineCap="Flat" Effect="{StaticResource filter6084-7}"
+                              Data="M 1e-6 58.88832 98.04687 59.375 49.8271 0 Z" Canvas.Left="92.761"
+                              Canvas.Top="83.381" RenderTransformOrigin="0.5,0.5">
                             <Path.RenderTransform>
                                 <TransformGroup>
-                                    <ScaleTransform/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="179.736"/>
-                                    <TranslateTransform X="0.111" Y="48"/>
+                                    <ScaleTransform />
+                                    <SkewTransform />
+                                    <RotateTransform Angle="179.736" />
+                                    <TranslateTransform X="0.111" Y="48" />
                                 </TransformGroup>
                             </Path.RenderTransform>
                         </Path>
-                        <Path x:Name="path60889_Copy" Fill="#9AA5E4" StrokeThickness="1" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Effect="{StaticResource filter6102-8}" Data="m 35.546875 107.42188 26.5625 -0.39063 L 62.5 54.6875 H 36.71875 Z" Canvas.Left="92.761" Canvas.Top="83.381" RenderTransformOrigin="0.5,0.5">
+                        <Path x:Name="path60889_Copy" Fill="#9AA5E4" StrokeThickness="1" StrokeLineJoin="Miter"
+                              StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Effect="{StaticResource filter6102-8}"
+                              Data="m 35.546875 107.42188 26.5625 -0.39063 L 62.5 54.6875 H 36.71875 Z"
+                              Canvas.Left="92.761" Canvas.Top="83.381" RenderTransformOrigin="0.5,0.5">
                             <Path.RenderTransform>
                                 <TransformGroup>
-                                    <ScaleTransform/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="179.736"/>
-                                    <TranslateTransform X="36" Y="-0.083"/>
+                                    <ScaleTransform />
+                                    <SkewTransform />
+                                    <RotateTransform Angle="179.736" />
+                                    <TranslateTransform X="36" Y="-0.083" />
                                 </TransformGroup>
                             </Path.RenderTransform>
                         </Path>

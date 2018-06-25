@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace Models
 {
@@ -15,9 +16,7 @@ namespace Models
 
         protected bool Equals(User other)
         {
-            return Id == other.Id && string.Equals(Username, other.Username) &&
-                   string.Equals(Firstname, other.Firstname) && string.Equals(Lastname, other.Lastname) &&
-                   string.Equals(Password, other.Password) && IsAdmin == other.IsAdmin;
+            return Id == other.Id;
         }
 
         public override bool Equals(object obj)

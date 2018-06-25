@@ -29,6 +29,7 @@ namespace Client.Controllers
 
             (var userPages, var adminPages) = MainWindowNavigator.InitializePages();
             _viewModel.UserPages = MainWindowNavigator.UserPages;
+            _viewModel.AdminPages = MainWindowNavigator.AdminPages;
 
             MainWindowNavigator.NavigateToFirstPage();
             _view.ShowDialog();
@@ -40,6 +41,9 @@ namespace Client.Controllers
             MainWindowNavigator.UserPageControllers.Add(new ItemsPageController());
             MainWindowNavigator.UserPageControllers.Add(new BestItemsPageController());
             MainWindowNavigator.UserPageControllers.Add(new FrequentItemsPageController());
+
+            MainWindowNavigator.AdminPageControllers.Add(new UserManagementPageController());
+            MainWindowNavigator.AdminPageControllers.Add(new CategoryManagementPageController());
         }
 
         private void ExecuteNavChangeCommand(object obj)

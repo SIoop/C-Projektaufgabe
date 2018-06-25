@@ -48,7 +48,14 @@ namespace Server.Framework
                 using (var transaction = session.BeginTransaction())
                 {
                     session.SaveOrUpdate(entity);
-                    transaction.Commit();
+                    try
+                    {
+                        transaction.Commit();
+                    }
+                    catch (NHibernate.StaleObjectStateException objectStateException)
+                    {
+                        
+                    }
                 }
             }
         }
