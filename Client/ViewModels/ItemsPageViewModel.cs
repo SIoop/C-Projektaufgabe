@@ -46,6 +46,19 @@ namespace Client.ViewModels
             }
         }
 
+        private Rating _selectedRating;
+
+        public Rating SelectedRating
+        {
+            get => _selectedRating;
+            set
+            {
+                _selectedRating = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         private bool _editMode = true;
 
         public bool EditMode

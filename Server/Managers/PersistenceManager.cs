@@ -25,9 +25,6 @@ namespace Server.Managers
 
         public bool SaveOrUpdate(T t)
         {
-            var all = _repository.GetAll();
-            var find = all.Find(x => x.Id.Equals(t.Id));
-            if (find == null) return false;
             _repository.SaveOrUpdate(t);
             return true;
         }

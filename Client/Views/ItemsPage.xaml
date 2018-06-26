@@ -37,18 +37,30 @@
             <Border BorderBrush="#1E59B2" BorderThickness="1">
                 <StackPanel HorizontalAlignment="Stretch" Background="#D5D5FE">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="15">
-                        <TextBlock TextAlignment="Center" HorizontalAlignment="Left" FontSize="20" Background="#D5D5FE"
-                                   Width="300">
-                            Name:
-                        </TextBlock>
-                        <TextBox Text="{Binding SelectedItem.Name, Mode=TwoWay}" IsReadOnly="{Binding EditMode}" TextAlignment="Center" Width="300" FontSize="20"
-                                 Background="#EEEFFF" />
+                        <DockPanel>
+                            <Label HorizontalAlignment="Left" FontSize="20" Background="#D5D5FE" BorderBrush="DarkGray"
+                                   BorderThickness="0,0,0,3">
+                                Name:
+                            </Label>
+                            <TextBox Text="{Binding SelectedItem.Name, Mode=TwoWay}" IsReadOnly="{Binding EditMode}"
+                                     TextAlignment="Center" Width="300" FontSize="20" BorderBrush="DarkGray"
+                                     BorderThickness="0,0,0,3"
+                                     Background="#EEEFFF" />
+                        </DockPanel>
                     </StackPanel>
-                    <Button Margin="15" Width="300" FontSize="20" BorderBrush="#9AA5E4" Background="#EEEFFF" Command="{Binding RateCommand}">Bewerten!</Button>
-                    <Button Margin="15" FontSize="20" Width="300" BorderBrush="#9AA5E4" Background="#EEEFFF" Command="{Binding DeleteRatingCommand}">Bewertung entfernen!</Button>
-                </StackPanel></Border>
+                    <Button Margin="15" Width="300" FontSize="20" BorderBrush="#9AA5E4" Background="#EEEFFF"
+                            Command="{Binding RateCommand}">
+                        Bewerten!
+                    </Button>
+                    <Button Margin="15" FontSize="20" Width="300" BorderBrush="#9AA5E4" Background="#EEEFFF"
+                            Command="{Binding DeleteRatingCommand}">
+                        Bewertung entfernen!
+                    </Button>
+                </StackPanel>
+            </Border>
             <Border Grid.Column="1" BorderBrush="#1E59B2" BorderThickness="1">
-                <ListBox ItemsSource="{Binding SelectedItem.Ratings}" HorizontalContentAlignment="Stretch" BorderThickness="0">
+                <ListBox ItemsSource="{Binding SelectedItem.Ratings}" SelectedItem="{Binding SelectedRating}" HorizontalContentAlignment="Stretch"
+                         BorderThickness="0">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Border BorderBrush="#1E59B2" BorderThickness="1" Margin="-2">
@@ -60,19 +72,20 @@
                                             <Run Text="{Binding User.Firstname}" />
                                             <Run Text=" " />
                                             <Run Text="{Binding User.Lastname}" />
-                                            <Run Text=" ("></Run>
-                                            <Run Text="{Binding User.Username}"></Run>
-                                            <Run Text=")"></Run>
+                                            <Run Text=" (" />
+                                            <Run Text="{Binding User.Username}" />
+                                            <Run Text=")" />
                                         </TextBlock>
                                     </StackPanel>
                                     <Viewbox Height="20">
-                                        <local:Rating Value="{Binding Score}"></local:Rating>
+                                        <local:Rating Value="{Binding Score}" />
                                     </Viewbox>
                                 </StackPanel>
                             </Border>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
-                </ListBox></Border>
+                </ListBox>
+            </Border>
         </Grid>
     </Grid>
 </Page>

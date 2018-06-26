@@ -29,6 +29,19 @@ namespace Client.ViewModels
             }
         }
 
+        private bool _busy;
+
+        public bool Busy
+        {
+            get => _busy;
+            set
+            {
+                _busy = value;
+                OnPropertyChanged();
+            }
+        }
+
+
 
         public RelayCommand LoginCommand { get; set; }
 

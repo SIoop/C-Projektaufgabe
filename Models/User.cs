@@ -1,17 +1,87 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
+using Models.Annotations;
 
 namespace Models
 {
     [DataContract]
-    public class User : BaseModel
+    public class User : BaseModel, INotifyPropertyChanged
     {
-        [DataMember] public int Id { get; set; }
-        [DataMember] public string Username { get; set; }
-        [DataMember] public string Firstname { get; set; }
-        [DataMember] public string Lastname { get; set; }
-        [DataMember] public string Password { get; set; }
-        [DataMember] public bool IsAdmin { get; set; }
+        private int _id;
+        private string _username;
+        private string _firstname;
+        private string _lastname;
+        private string _password;
+        private bool _isAdmin;
+
+        [DataMember]
+        public int Id
+        {
+            get => _id;
+            set
+            {
+                _id = value;
+                OnPropertyChanged();
+            }
+        }
+
+        [DataMember]
+        public string Username
+        {
+            get => _username;
+            set
+            {
+                _username = value;
+                OnPropertyChanged();
+            }
+        }
+
+        [DataMember]
+        public string Firstname
+        {
+            get => _firstname;
+            set
+            {
+                _firstname = value;
+                OnPropertyChanged();
+            }
+        }
+
+        [DataMember]
+        public string Lastname
+        {
+            get => _lastname;
+            set
+            {
+                _lastname = value;
+                OnPropertyChanged();
+            }
+        }
+
+        [DataMember]
+        public string Password
+        {
+            get => _password;
+            set
+            {
+                _password = value;
+                OnPropertyChanged();
+            }
+        }
+
+        [DataMember]
+        public bool IsAdmin
+        {
+            get => _isAdmin;
+            set
+            {
+                _isAdmin = value;
+                OnPropertyChanged();
+            }
+        }
+
         [DataMember] public int Version { get; set; }
 
         protected bool Equals(User other)
@@ -40,6 +110,14 @@ namespace Models
                 hashCode = (hashCode * 397) ^ Version;
                 return hashCode;
             }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

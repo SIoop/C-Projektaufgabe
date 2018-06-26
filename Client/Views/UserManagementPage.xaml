@@ -13,7 +13,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding Users}" AutoGenerateColumns="False" FontSize="15"
+        <DataGrid ItemsSource="{Binding Users, Mode=TwoWay}" AutoGenerateColumns="False" FontSize="15"
                   GridLinesVisibility="Horizontal" IsReadOnly="True" RowHeight="30"
                   SelectedItem="{Binding SelectedUser}">
             <DataGrid.Columns>

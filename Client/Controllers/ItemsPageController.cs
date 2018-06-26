@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
 using Client.CategoryProxy;
@@ -19,6 +18,7 @@ namespace Client.Controllers
         private readonly ItemsPageViewModel _viewModel = new ItemsPageViewModel();
         private readonly ItemServiceClient _itemClient = new ItemServiceClient();
         private readonly CategoryServiceClient _catClient = new CategoryServiceClient();
+        private readonly RatingServiceClient _ratClient = new RatingServiceClient();
 
         public void Initialize()
         {
@@ -53,7 +53,10 @@ namespace Client.Controllers
 
         private void ExecuteDeleteRatingCommand(object obj)
         {
-           
+            if (_viewModel.SelectedRating != null)
+            {
+                _ratClient.DeleteRating(_viewModel.SelectedRating);
+            }
         }
 
         public void Notify(string navigationTarget)

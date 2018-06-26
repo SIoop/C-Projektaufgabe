@@ -20,9 +20,9 @@ namespace Client.Controllers
             Page = new UserManagementPagexaml {DataContext = _viewModel};
         }
 
-        private async void LoadItems()
+        private void LoadItems()
         {
-            _viewModel.Users = new ObservableCollection<User>((await _client.GetAllUsersAsync()));
+            _viewModel.Users = new ObservableCollection<User>(( _client.GetAllUsers()));
         }
 
         public Page Page { get; set; }

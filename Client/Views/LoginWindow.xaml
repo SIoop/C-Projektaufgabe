@@ -4,9 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="Rate This Stuff - Login" Height="450" Width="800">
-    <Grid Margin="100,30,100,30">
+    
+    <Grid Margin="100,30,100,30" Background="#EEEFFF">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.2*"></RowDefinition>
             <RowDefinition Height="0.1*"></RowDefinition>
@@ -21,10 +23,77 @@
 
         <TextBlock Text="Benutzername" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center" FontSize="25"></TextBlock>
         <TextBlock Text="Passwort" Grid.Row="2" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="25"></TextBlock>
-        
+
         <TextBox Grid.Row="1" Grid.Column="1" Height="30" FontSize="20" Text="{Binding Username}"></TextBox>
         <PasswordBox Grid.Row="2" Grid.Column="1" Height="30" FontSize="20" Name="LoginPasswordBox"></PasswordBox>
-        
-        <Button Grid.Row="3" Grid.Column="1" FontSize="20" Width="100" Height="40" Margin="314,10,0,10" Command="{Binding LoginCommand}">Login</Button>
+
+        <Button Grid.Row="3" Grid.Column="1" BorderBrush="#D5D5FE" Background="#9AA5E4" FontSize="20" Width="100" Height="40" HorizontalAlignment="Right" Margin="0,0,10,0" Command="{Binding LoginCommand}" IsDefault="True">Login</Button>
+
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <Viewbox Stretch="Uniform" >
+                <Canvas Name="SVGRoot" Width="200" Height="200">
+                    <Canvas.RenderTransform>
+                        <TranslateTransform X="0" Y="0" />
+                    </Canvas.RenderTransform>
+                    <Canvas.Resources>
+                        <BlurEffect x:Key="filter6084" Radius="2" />
+                        <BlurEffect x:Key="filter6102" Radius="1" />
+                        <BlurEffect x:Key="filter6084-7" Radius="2" />
+                        <BlurEffect x:Key="filter6102-8" Radius="1" />
+                    </Canvas.Resources>
+                    <Canvas Name="layer1">
+                        <Canvas Name="g6108">
+                            <Path Name="path5255" Fill="#FF9AA5E4" StrokeThickness="0" Stroke="#FF000000"
+                                  StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat"
+                                  StrokeEndLineCap="Flat" Effect="{StaticResource filter6084}"
+                                  Data="M 1e-6 58.88832 98.04687 59.375 49.8271 0 Z" />
+                            <Path Name="path6088" Fill="#FF9AA5E4" StrokeThickness="1" StrokeLineJoin="Miter"
+                                  StrokeStartLineCap="Flat" StrokeEndLineCap="Flat"
+                                  Effect="{StaticResource filter6102}"
+                                  Data="m 35.546875 107.42188 26.5625 -0.39063 L 62.5 54.6875 H 36.71875 Z" />
+                        </Canvas>
+                        <Canvas Name="g61081" Opacity="1">
+                            <Path Name="path52555" Fill="#FFFF9D4B" StrokeThickness="0" Stroke="#FF000000"
+                                  StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat"
+                                  StrokeEndLineCap="Flat" Effect="{StaticResource filter6084-7}"
+                                  Data="M 1e-6 58.88832 98.04687 59.375 49.8271 0 Z" />
+                            <Path Name="path60889" Fill="#FFFF9D4B" StrokeThickness="1" StrokeLineJoin="Miter"
+                                  StrokeStartLineCap="Flat" StrokeEndLineCap="Flat"
+                                  Effect="{StaticResource filter6102-8}"
+                                  Data="m 35.546875 107.42188 26.5625 -0.39063 L 62.5 54.6875 H 36.71875 Z" />
+                            <Path x:Name="path52555_Copy" Fill="#9AA5E4" StrokeThickness="0" Stroke="#FF000000"
+                                  StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat"
+                                  StrokeEndLineCap="Flat" Effect="{StaticResource filter6084-7}"
+                                  Data="M 1e-6 58.88832 98.04687 59.375 49.8271 0 Z" Canvas.Left="92.761"
+                                  Canvas.Top="83.381" RenderTransformOrigin="0.5,0.5">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <SkewTransform />
+                                        <RotateTransform Angle="179.736" />
+                                        <TranslateTransform X="0.111" Y="48" />
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                            <Path x:Name="path60889_Copy" Fill="#9AA5E4" StrokeThickness="1" StrokeLineJoin="Miter"
+                                  StrokeStartLineCap="Flat" StrokeEndLineCap="Flat"
+                                  Effect="{StaticResource filter6102-8}"
+                                  Data="m 35.546875 107.42188 26.5625 -0.39063 L 62.5 54.6875 H 36.71875 Z"
+                                  Canvas.Left="92.761" Canvas.Top="83.381" RenderTransformOrigin="0.5,0.5">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <SkewTransform />
+                                        <RotateTransform Angle="179.736" />
+                                        <TranslateTransform X="36" Y="-0.083" />
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </Canvas>
+                    </Canvas>
+                </Canvas>
+            </Viewbox></Border>
+        <xctk:BusyIndicator Grid.Row="0" IsBusy="{Binding Busy}" Grid.ColumnSpan="2" Grid.RowSpan="5" ></xctk:BusyIndicator>
+
     </Grid>
 </Window>

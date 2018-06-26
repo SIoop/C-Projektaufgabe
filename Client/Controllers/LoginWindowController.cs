@@ -1,7 +1,10 @@
-﻿using Client.Framework;
+﻿using System.Windows;
+using Client.Framework;
 using Client.UserProxy;
 using Client.ViewModels;
 using Client.Views;
+using Xceed.Wpf.Toolkit;
+using MessageBox = System.Windows.MessageBox;
 
 namespace Client.Controllers
 {
@@ -20,18 +23,24 @@ namespace Client.Controllers
 
         private async void ExecuteLoginCommand(object obj)
         {
+            _viewModel.Busy = true;
+            UIHelper.SetBusyState();
             var result = await _client.LoginUserAsync(_viewModel.Username, _view.LoginPasswordBox.Password);
 
             if (result == null)
             {
-                
+                UIHelper.SetBusyState();
+                _viewModel.Busy = false;
+                MessageBox.Show("Falsche Anmeldedaten!", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
                 ApplicationData.User = result;
                 _view.Hide();
+                _viewModel.Busy = false;
                 new MainWindowController().Initialize();
                 _view.Show();
+                UIHelper.SetBusyState();
             }
         }
     }
