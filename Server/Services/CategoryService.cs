@@ -7,14 +7,14 @@ namespace Server.Services
 {
     public class CategoryService : ICategoryService
     {
-        private readonly PersistenceManager<Category> _manager = new PersistenceManager<Category>();
+        public PersistenceManager<Category> Manager = new PersistenceManager<Category>();
 
-        public List<Category> GetAll() => _manager.GetAll();
+        public List<Category> GetAll() => Manager.GetAll();
 
-        public Category Get(int id) => _manager.Get(id);
+        public Category Get(int id) => Manager.Get(id);
 
-        public bool Delete(Category category) => _manager.Delete(category);
+        public bool Delete(Category category) => Manager.Delete(category);
 
-        public bool SaveOrUpdate(Category category) => _manager.SaveOrUpdate(category);
+        public bool SaveOrUpdate(Category category) => Manager.SaveOrUpdate(category);
     }
 }

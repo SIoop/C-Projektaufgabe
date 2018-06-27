@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <DataGrid ItemsSource="{Binding Users, Mode=TwoWay}" AutoGenerateColumns="False" FontSize="15"
                   GridLinesVisibility="Horizontal" IsReadOnly="True" RowHeight="30"
-                  SelectedItem="{Binding SelectedUser}">
+                  SelectedItem="{Binding SelectedUser, Mode=TwoWay}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Benutzername" Width="*" Binding="{Binding Username}" />
                 <DataGridTextColumn Header="Vorname" Width="*" Binding="{Binding Firstname}" />

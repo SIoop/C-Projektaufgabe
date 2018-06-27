@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
 using Client.CategoryProxy;
@@ -22,7 +23,6 @@ namespace Client.Controllers
 
         public void Initialize()
         {
-            _viewModel.SelectionChange = new RelayCommand(SelectionChanged);
             _viewModel.RateCommand = new RelayCommand(ExecuteRateCommand);
             _viewModel.DeleteRatingCommand = new RelayCommand(ExecuteDeleteRatingCommand);
             Page = new ItemsPage {DataContext = _viewModel};
@@ -30,13 +30,13 @@ namespace Client.Controllers
             MainWindowNavigator.NavigationSubscribers.Add(this);
         }
 
-        private void LoadItems()
+        private async void LoadItems()
         {
             if (ApplicationData.Category != null)
             {
-                ApplicationData.Category = _catClient.Get(ApplicationData.Category.Id);
+                ApplicationData.Category = await _catClient.GetAsync(ApplicationData.Category.Id);
                 _viewModel.Items = ApplicationData.Category.Items.ToList();
-                _viewModel.SelectedItem = null;
+                //_viewModel.SelectedItem = null;
             }
         }
 
@@ -67,10 +67,6 @@ namespace Client.Controllers
             }
         }
 
-        private void SelectionChanged(object obj)
-        {
-        }
-
         public (bool, bool, bool, bool) ActiveButtons { get; set; } = (true, true, true, true);
 
         public void NewButtonPressed()
@@ -91,7 +87,7 @@ namespace Client.Controllers
 
         public async void SaveButtonPressed()
         {
-            await _catClient.SaveOrUpdateAsync(ApplicationData.Category);
+            await _itemClient.SaveOrUpdateAsync(_viewModel.SelectedItem);
             LoadItems();
         }
 

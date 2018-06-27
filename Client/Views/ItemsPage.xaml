@@ -16,14 +16,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <DockPanel>
-            <DataGrid Grid.Row="0" ItemsSource="{Binding Items}" AutoGenerateColumns="False" FontSize="18"
-                      HorizontalGridLinesBrush="#1E59B2" IsReadOnly="True"
-                      SelectedValue="{Binding SelectedItem, Mode=TwoWay}" SelectionMode="Single">
-                <ie:Interaction.Triggers>
-                    <ie:EventTrigger EventName="SelectionChanged">
-                        <ie:InvokeCommandAction Command="{Binding SelectionChange}" />
-                    </ie:EventTrigger>
-                </ie:Interaction.Triggers>
+            <DataGrid ItemsSource="{Binding Path=Items, Mode=TwoWay}" AutoGenerateColumns="False" FontSize="18"
+                      HorizontalGridLinesBrush="#1E59B2" IsReadOnly="True" IsSynchronizedWithCurrentItem="True"
+                      SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}" SelectionMode="Single">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}" />
                 </DataGrid.Columns>
@@ -42,7 +37,7 @@
                                    BorderThickness="0,0,0,3">
                                 Name:
                             </Label>
-                            <TextBox Text="{Binding SelectedItem.Name, Mode=TwoWay}" IsReadOnly="{Binding EditMode}"
+                            <TextBox Text="{Binding SelectedItem.Name}" IsReadOnly="{Binding EditMode}"
                                      TextAlignment="Center" Width="300" FontSize="20" BorderBrush="DarkGray"
                                      BorderThickness="0,0,0,3"
                                      Background="#EEEFFF" />
@@ -60,7 +55,7 @@
             </Border>
             <Border Grid.Column="1" BorderBrush="#1E59B2" BorderThickness="1">
                 <ListBox ItemsSource="{Binding SelectedItem.Ratings}" SelectedItem="{Binding SelectedRating}" HorizontalContentAlignment="Stretch"
-                         BorderThickness="0">
+                         BorderThickness="0" IsSynchronizedWithCurrentItem="True">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Border BorderBrush="#1E59B2" BorderThickness="1" Margin="-2">

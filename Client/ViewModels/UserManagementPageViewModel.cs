@@ -6,7 +6,15 @@ namespace Client.ViewModels
 {
     public class UserManagementPageViewModel : ViewModelBase
     {
-        public ObservableCollection<User> Users { get; set; }
+        public ObservableCollection<User> Users
+        {
+            get => _users;
+            set
+            {
+                _users = value;
+                OnPropertyChanged();
+            }
+        }
 
         private User _selectedUser;
 
@@ -22,6 +30,7 @@ namespace Client.ViewModels
         }
 
         private bool _editMode = true;
+        private ObservableCollection<User> _users;
 
         public bool EditMode
         {

@@ -4,7 +4,7 @@ using System.IO;
 
 namespace Server.Framework
 {
-    public class Repository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class
     {
         public Repository(string databaseFile)
         {
@@ -54,7 +54,7 @@ namespace Server.Framework
                     }
                     catch (NHibernate.StaleObjectStateException objectStateException)
                     {
-                        
+                        Console.WriteLine(objectStateException.Message);
                     }
                 }
             }

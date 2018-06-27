@@ -9,84 +9,19 @@ namespace Models
     [DataContract]
     public class User : BaseModel, INotifyPropertyChanged
     {
-        private int _id;
-        private string _username;
-        private string _firstname;
-        private string _lastname;
-        private string _password;
-        private bool _isAdmin;
-
-        [DataMember]
-        public int Id
-        {
-            get => _id;
-            set
-            {
-                _id = value;
-                OnPropertyChanged();
-            }
-        }
-
-        [DataMember]
-        public string Username
-        {
-            get => _username;
-            set
-            {
-                _username = value;
-                OnPropertyChanged();
-            }
-        }
-
-        [DataMember]
-        public string Firstname
-        {
-            get => _firstname;
-            set
-            {
-                _firstname = value;
-                OnPropertyChanged();
-            }
-        }
-
-        [DataMember]
-        public string Lastname
-        {
-            get => _lastname;
-            set
-            {
-                _lastname = value;
-                OnPropertyChanged();
-            }
-        }
-
-        [DataMember]
-        public string Password
-        {
-            get => _password;
-            set
-            {
-                _password = value;
-                OnPropertyChanged();
-            }
-        }
-
-        [DataMember]
-        public bool IsAdmin
-        {
-            get => _isAdmin;
-            set
-            {
-                _isAdmin = value;
-                OnPropertyChanged();
-            }
-        }
-
+        [DataMember] public int Id { get; set; }
+        [DataMember] public string Username { get; set; }
+        [DataMember] public string Firstname { get; set; }
+        [DataMember] public string Lastname { get; set; }
+        [DataMember] public string Password { get; set; }
+        [DataMember] public bool IsAdmin { get; set; }
         [DataMember] public int Version { get; set; }
 
         protected bool Equals(User other)
         {
-            return Id == other.Id;
+            return Id == other.Id && string.Equals(Username, other.Username) &&
+                   string.Equals(Firstname, other.Firstname) && string.Equals(Lastname, other.Lastname) &&
+                   string.Equals(Password, other.Password) && IsAdmin == other.IsAdmin;
         }
 
         public override bool Equals(object obj)
@@ -107,7 +42,6 @@ namespace Models
                 hashCode = (hashCode * 397) ^ (Lastname != null ? Lastname.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Password != null ? Password.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ IsAdmin.GetHashCode();
-                hashCode = (hashCode * 397) ^ Version;
                 return hashCode;
             }
         }

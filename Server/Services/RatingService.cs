@@ -7,10 +7,10 @@ namespace Server.Services
 {
     public class RatingService : IRatingService
     {
-        private readonly PersistenceManager<Rating> _manager = new PersistenceManager<Rating>();
+        public PersistenceManager<Rating> Manager = new PersistenceManager<Rating>();
 
-        public bool DeleteRating(Rating rating) => _manager.Delete(rating);
+        public bool DeleteRating(Rating rating) => Manager.Delete(rating);
 
-        public bool AddRating(Rating rating) => _manager.SaveOrUpdate(rating);
+        public bool AddRating(Rating rating) => Manager.SaveOrUpdate(rating);
     }
 }

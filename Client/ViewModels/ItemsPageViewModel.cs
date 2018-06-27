@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Client.Framework;
-using Client.RatingProxy;
 using Models;
 
 namespace Client.ViewModels
@@ -18,18 +16,6 @@ namespace Client.ViewModels
             set
             {
                 _items = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private ICommand _selectionChange;
-
-        public ICommand SelectionChange
-        {
-            get => _selectionChange;
-            set
-            {
-                _selectionChange = value;
                 OnPropertyChanged();
             }
         }
@@ -94,6 +80,5 @@ namespace Client.ViewModels
                 OnPropertyChanged();
             }
         }
-
     }
 }

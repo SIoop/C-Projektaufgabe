@@ -27,7 +27,7 @@ namespace Client.Controllers
 
             RegisterControllers();
 
-            (var userPages, var adminPages) = MainWindowNavigator.InitializePages();
+            MainWindowNavigator.InitializePages();
             _viewModel.UserPages = MainWindowNavigator.UserPages;
             _viewModel.AdminPages = MainWindowNavigator.AdminPages;
 

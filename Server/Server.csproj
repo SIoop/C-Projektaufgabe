@@ -77,6 +77,7 @@
     <Compile Include="Contracts\ICategoryService.cs" />
     <Compile Include="Contracts\IItemService.cs" />
     <Compile Include="Contracts\IRatingService.cs" />
+    <Compile Include="Framework\IRepository.cs" />
     <Compile Include="Framework\NHibernateHelper.cs" />
     <Compile Include="Framework\Repository.cs" />
     <Compile Include="Managers\PersistenceManager.cs" />
@@ -96,6 +97,7 @@
     <None Include="App.config" />
     <None Include="Database\rateMe.db3" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Models.Category.datasource" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj">

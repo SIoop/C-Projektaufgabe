@@ -29,7 +29,7 @@ namespace Client.Controllers
         public (bool, bool, bool, bool) ActiveButtons { get; set; } = (true, true, true, true);
         public void NewButtonPressed()
         {
-            var item = new User {Password = BCrypt.Net.BCrypt.HashPassword("geheim")};
+            var item = new User {Password = "geheim"};
             _viewModel.Users.Add(item);
             _viewModel.SelectedUser = item;
         }

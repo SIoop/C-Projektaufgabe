@@ -7,7 +7,7 @@ namespace Client.Controllers
 {
     public class RateWindowController
     {
-        private RateWindow _view;
+        public RateWindow View;
         private RateWindowViewModel _viewModel;
 
         public Rating Initialize()
@@ -17,20 +17,20 @@ namespace Client.Controllers
                 RateCommand = new RelayCommand(ExecuteRateCommand),
                 CancelCommand = new RelayCommand(ExecuteCancelCommand)
             };
-            _view = new RateWindow() {DataContext = _viewModel};
-            _view.ShowDialog();
+            View = new RateWindow() {DataContext = _viewModel};
+            View.ShowDialog();
             return _viewModel.Rating;
         }
 
         private void ExecuteRateCommand(object obj)
         {
-            _view.Close();
+            View.Close();
         }
 
         private void ExecuteCancelCommand(object obj)
         {
             _viewModel.Rating = null;
-            _view.Close();
+            View.Close();
         }
     }
 }
