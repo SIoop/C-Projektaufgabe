@@ -26,25 +26,25 @@
             <Rectangle VerticalAlignment="Stretch" Margin="2" Stroke="#1E59B2" />
         </StackPanel>
         <WrapPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom">
-            <Button Margin="5" BorderBrush="#D5D5FE" Background="#EEEFFF" Command="{Binding NewCommand}">
+            <Button Margin="5" BorderBrush="#D5D5FE" Background="#EEEFFF" Command="{Binding NewCommand}" IsEnabled="{Binding NewButton}">
                 <StackPanel Orientation="Horizontal">
                     <Image Margin="3" Source="../Resources/Icons/icons8-add-new-96.png" Width="20" />
                     <TextBlock FontSize="18">Neu</TextBlock>
                 </StackPanel>
             </Button>
-            <Button Margin="5" BorderBrush="#D5D5FE" Background="#EEEFFF" Command="{Binding EditCommand}">
+            <ToggleButton Margin="5" BorderBrush="#D5D5FE" Background="#EEEFFF" Command="{Binding EditCommand}" IsEnabled="{Binding EditButton}">
                 <StackPanel Orientation="Horizontal">
                     <Image Margin="3" Source="../Resources/Icons/icons8-pencil-96.png" Width="20" />
                     <TextBlock FontSize="18">Bearbeiten</TextBlock>
                 </StackPanel>
-            </Button>
-            <Button Margin="5" BorderBrush="#D5D5FE" Background="#EEEFFF" Command="{Binding SaveCommand}">
+            </ToggleButton>
+            <Button Margin="5" BorderBrush="#D5D5FE" Background="#EEEFFF" Command="{Binding SaveCommand}" IsEnabled="{Binding SaveButton}">
                 <StackPanel Orientation="Horizontal">
                     <Image Margin="3" Source="../Resources/Icons/icons8-save-96.png" Width="20" />
                     <TextBlock FontSize="18">Speichern</TextBlock>
                 </StackPanel>
             </Button>
-            <Button Margin="5" BorderBrush="#D5D5FE" Background="#EEEFFF" Command="{Binding DeleteCommand}">
+            <Button Margin="5" BorderBrush="#D5D5FE" Background="#EEEFFF" Command="{Binding DeleteCommand}" IsEnabled="{Binding DeleteButton}">
                 <StackPanel Orientation="Horizontal">
                     <Image Margin="3" Source="../Resources/Icons/icons8-cancel-96.png" Width="20" />
                     <TextBlock FontSize="18">Löschen</TextBlock>

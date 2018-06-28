@@ -18,16 +18,5 @@
             if (obj.GetType() != this.GetType()) return false;
             return Equals((RatedItem) obj);
         }
-
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                var hashCode = (Name != null ? Name.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ AvgRating.GetHashCode();
-                hashCode = (hashCode * 397) ^ Ratings;
-                return hashCode;
-            }
-        }
     }
 }

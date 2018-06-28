@@ -6,7 +6,19 @@ namespace Client.ViewModels
 {
     public class CategoryManagementPageViewModel : ViewModelBase
     {
-        public ObservableCollection<Category> Categories { get; set; }
+        public ObservableCollection<Category> Categories
+        {
+            get => _categories;
+            set
+            {
+                if (Equals(value, _categories))
+                {
+                    return;
+                }
+                _categories = value;
+                OnPropertyChanged();
+            }
+        }
 
         private Category _selectedCategory;
 
@@ -15,12 +27,14 @@ namespace Client.ViewModels
             get => _selectedCategory;
             set
             {
+                if (Equals(value, SelectedCategory)) return;
                 _selectedCategory = value;
                 OnPropertyChanged();
             }
         }
 
         private bool _editMode;
+        private ObservableCollection<Category> _categories;
 
         public bool EditMode
         {

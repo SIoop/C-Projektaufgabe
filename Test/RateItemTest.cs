@@ -47,8 +47,8 @@ namespace Test
         {
             var con = new RateWindowController();
             con.Initialize();
-            con.View.Close();
             Assert.IsNotNull(con.View);
+            con.View.Close();
         }
 
         [TestMethod]

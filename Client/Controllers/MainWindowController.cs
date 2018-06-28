@@ -18,6 +18,8 @@ namespace Client.Controllers
             _viewModel = new MainWindowViewModel();
             _view = new MainWindow {DataContext = _viewModel};
             MainWindowNavigator.NavFrame = _view.NavigationFrame;
+            MainWindowNavigator.ButtonMethod = SetButtons;
+
             _viewModel.NavChange = new RelayCommand(ExecuteNavChangeCommand);
             _viewModel.NewCommand = new RelayCommand(MainWindowNavigator.OnNew);
             _viewModel.EditCommand = new RelayCommand(MainWindowNavigator.OnEdit);
@@ -33,6 +35,14 @@ namespace Client.Controllers
 
             MainWindowNavigator.NavigateToFirstPage();
             _view.ShowDialog();
+        }
+
+        private void SetButtons(bool newButton, bool editButton, bool saveButton, bool deleteButton)
+        {
+            _viewModel.NewButton = newButton;
+            _viewModel.EditButton = editButton;
+            _viewModel.SaveButton = saveButton;
+            _viewModel.DeleteButton = deleteButton;
         }
 
         private static void RegisterControllers()

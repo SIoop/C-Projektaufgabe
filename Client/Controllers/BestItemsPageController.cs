@@ -10,7 +10,7 @@ using Models;
 
 namespace Client.Controllers
 {
-    public class BestItemsPageController : PageControllerBase, MainWindowNavigator.NavigationSubscriber
+    public class BestItemsPageController : IPageControllerBase
     {
         private readonly BestItemsPageViewModel _viewModel = new BestItemsPageViewModel();
         private readonly ItemServiceClient _client = new ItemServiceClient();
@@ -19,7 +19,6 @@ namespace Client.Controllers
         {
             LoadItems();
             Page = new BestItemsPage() {DataContext = _viewModel};
-            MainWindowNavigator.NavigationSubscribers.Add(this);
         }
 
         private async void LoadItems()
@@ -32,33 +31,22 @@ namespace Client.Controllers
                 if (Math.Abs(diff) < 0) return 0;
                 else return -1;
             });
-            _viewModel.Items =  new ObservableCollection<RatedItem>(items);
+            _viewModel.Items = new ObservableCollection<RatedItem>(items);
         }
 
         public Page Page { get; set; }
+        public bool EditButtonActive { get; set; }
+        public bool NewButtonActive { get; set; }
+        public bool SaveButtonActive { get; set; }
+        public bool DeleteButtonActive { get; set; }
         public (bool, bool, bool, bool) ActiveButtons { get; set; }
 
-        public void NewButtonPressed()
-        {
-            
-        }
+        public void NewButtonPressed(){}
+        public void EditButtonPressed(){}
+        public void SaveButtonPressed(){}
+        public void DeleteButtonPressed(){}
 
-        public void EditButtonPressed()
-        {
-            
-        }
-
-        public void SaveButtonPressed()
-        {
-            
-        }
-
-        public void DeleteButtonPressed()
-        {
-            
-        }
-
-        public void Notify(string navigationTarget)
+        public void OnNavigation(string navigationTarget)
         {
             if (navigationTarget == Page.Title)
             {

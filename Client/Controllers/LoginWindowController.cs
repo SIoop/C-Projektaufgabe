@@ -13,6 +13,7 @@ namespace Client.Controllers
         private LoginWindowViewModel _viewModel;
         private readonly UserServiceClient _client = new UserServiceClient();
         private LoginWindow _view;
+        private bool _mainWindowOpen = false;
 
         public void Initialize()
         {
@@ -23,24 +24,29 @@ namespace Client.Controllers
 
         private async void ExecuteLoginCommand(object obj)
         {
-            _viewModel.Busy = true;
-            UIHelper.SetBusyState();
-            var result = await _client.LoginUserAsync(_viewModel.Username, _view.LoginPasswordBox.Password);
+            if (!_mainWindowOpen)
+            {
+                _mainWindowOpen = true;
+                _viewModel.Busy = true;
+                UIHelper.SetBusyState();
+                var result = await _client.LoginUserAsync(_viewModel.Username, _view.LoginPasswordBox.Password);
 
-            if (result == null)
-            {
-                UIHelper.SetBusyState();
-                _viewModel.Busy = false;
-                MessageBox.Show("Falsche Anmeldedaten!", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else
-            {
-                ApplicationData.User = result;
-                _view.Hide();
-                _viewModel.Busy = false;
-                new MainWindowController().Initialize();
-                _view.Show();
-                UIHelper.SetBusyState();
+                if (result == null)
+                {
+                    UIHelper.SetBusyState();
+                    _viewModel.Busy = false;
+                    MessageBox.Show("Falsche Anmeldedaten!", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                    _mainWindowOpen = false;
+                }
+                else
+                {
+                    ApplicationData.User = result;
+                    _view.Hide();
+                    _viewModel.Busy = false;
+                    new MainWindowController().Initialize();
+                    _view.Show();
+                    UIHelper.SetBusyState();
+                }
             }
         }
     }

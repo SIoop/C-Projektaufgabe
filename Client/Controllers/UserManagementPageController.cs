@@ -8,7 +8,7 @@ using Models;
 
 namespace Client.Controllers
 {
-    public class UserManagementPageController : PageControllerBase
+    public class UserManagementPageController : IPageControllerBase
     {
         private readonly UserManagementPageViewModel _viewModel = new UserManagementPageViewModel();
         private readonly UserServiceClient _client = new UserServiceClient();
@@ -26,7 +26,11 @@ namespace Client.Controllers
         }
 
         public Page Page { get; set; }
-        public (bool, bool, bool, bool) ActiveButtons { get; set; } = (true, true, true, true);
+        public bool EditButtonActive { get; set; }
+        public bool NewButtonActive { get; set; }
+        public bool SaveButtonActive { get; set; }
+        public bool DeleteButtonActive { get; set; }
+
         public void NewButtonPressed()
         {
             var item = new User {Password = "geheim"};
@@ -46,6 +50,11 @@ namespace Client.Controllers
         {
             if (_viewModel.SelectedUser != null) await _client.DeleteUserAsync(_viewModel.SelectedUser);
             LoadItems();
+        }
+
+        public void OnNavigation(string navigationTarget)
+        {
+            
         }
     }
 }

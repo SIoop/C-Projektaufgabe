@@ -21,6 +21,55 @@ namespace Client.ViewModels
             }
         }
 
+        private bool _newButton;
+
+        public bool NewButton
+        {
+            get => _newButton;
+            set
+            {
+                _newButton = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _editButton;
+
+        public bool EditButton
+        {
+            get => _editButton;
+            set
+            {
+                _editButton = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _saveButton;
+
+        public bool SaveButton
+        {
+            get => _saveButton;
+            set
+            {
+                _saveButton = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _deleteButton;
+
+        public bool DeleteButton
+        {
+            get => _deleteButton;
+            set
+            {
+                _deleteButton = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         public bool IsAdmin
         {
             get => _isAdmin;

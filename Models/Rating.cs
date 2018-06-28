@@ -24,18 +24,5 @@ namespace Models
             if (obj.GetType() != this.GetType()) return false;
             return Equals((Rating) obj);
         }
-
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                var hashCode = Id;
-                hashCode = (hashCode * 397) ^ Score;
-                hashCode = (hashCode * 397) ^ (Comment != null ? Comment.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ Version;
-                hashCode = (hashCode * 397) ^ (User != null ? User.GetHashCode() : 0);
-                return hashCode;
-            }
-        }
     }
 }

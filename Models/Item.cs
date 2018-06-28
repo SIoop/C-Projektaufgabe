@@ -23,16 +23,5 @@ namespace Models
             if (obj.GetType() != this.GetType()) return false;
             return Equals((Item) obj);
         }
-
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                var hashCode = Id;
-                hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ Version;
-                return hashCode;
-            }
-        }
     }
 }

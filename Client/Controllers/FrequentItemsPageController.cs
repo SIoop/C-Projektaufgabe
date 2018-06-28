@@ -7,7 +7,7 @@ using Client.Views;
 
 namespace Client.Controllers
 {
-    public class FrequentItemsPageController : PageControllerBase, MainWindowNavigator.NavigationSubscriber
+    public class FrequentItemsPageController : IPageControllerBase
     {
         private readonly ItemServiceClient _client = new ItemServiceClient();
         private readonly FrequentItemsPageViewModel _viewModel = new FrequentItemsPageViewModel();
@@ -16,7 +16,6 @@ namespace Client.Controllers
         {
             LoadItems();
             Page = new FrequentItemsPage(){DataContext = _viewModel};
-            MainWindowNavigator.NavigationSubscribers.Add(this);
         }
 
         private async void LoadItems()
@@ -27,7 +26,10 @@ namespace Client.Controllers
         }
 
         public Page Page { get; set; }
-        public (bool, bool, bool, bool) ActiveButtons { get; set; }
+        public bool EditButtonActive { get; set; }
+        public bool NewButtonActive { get; set; }
+        public bool SaveButtonActive { get; set; }
+        public bool DeleteButtonActive { get; set; }
 
         public void NewButtonPressed()
         {
@@ -49,7 +51,7 @@ namespace Client.Controllers
             
         }
 
-        public void Notify(string navigationTarget)
+        public void OnNavigation(string navigationTarget)
         {
             if (navigationTarget == Page.Title)
             {

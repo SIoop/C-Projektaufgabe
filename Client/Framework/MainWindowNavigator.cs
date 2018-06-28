@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Navigation;
+using Client.Views;
 using Models;
 
 namespace Client.Framework
@@ -12,10 +14,14 @@ namespace Client.Framework
     {
         public static Page CurrentNavStatus { get; set; }
 
-        public static Frame NavFrame;
-        public static List<PageControllerBase> UserPageControllers { get; set; } = new List<PageControllerBase>();
+        public delegate void SetButtonStatus(bool a, bool b, bool c, bool d);
 
-        public static List<PageControllerBase> AdminPageControllers { get; set; } = new List<PageControllerBase>();
+        public static SetButtonStatus ButtonMethod { get; set; }
+
+        public static Frame NavFrame;
+        public static List<IPageControllerBase> UserPageControllers { get; set; } = new List<IPageControllerBase>();
+
+        public static List<IPageControllerBase> AdminPageControllers { get; set; } = new List<IPageControllerBase>();
 
         public static ObservableCollection<Page> UserPages = new ObservableCollection<Page>();
         public static Page StartPage;
@@ -29,7 +35,7 @@ namespace Client.Framework
             UserPages.Add(UserPageControllers[0].Page);
             StartPage = UserPages[0];
 
-            AdminPages = new ObservableCollection<Page>(AdminPageControllers.ToList().Select(c =>
+            AdminPages = new ObservableCollection<Page>(AdminPageControllers.Select(c =>
             {
                 c.Initialize();
                 return c.Page;
@@ -48,6 +54,11 @@ namespace Client.Framework
             NavigationSubscribers.ForEach(s => s.Notify((foundPage).Title));
 
             NavFrame.Navigate(foundPage);
+            var controller = UserPageControllers.Find(c =>
+                                 Equals(c.Page, UserPages.ToList().Find(p => p.Title == foundPage.Title))) ??
+                             AdminPageControllers.Find(c =>
+                                 Equals(c.Page, AdminPages.ToList().Find(p => p.Title == foundPage.Title)));
+            ButtonMethod.Invoke(controller.NewButtonActive, controller.EditButtonActive, controller.SaveButtonActive, controller.DeleteButtonActive);
 
             CurrentNavStatus = foundPage;
         }

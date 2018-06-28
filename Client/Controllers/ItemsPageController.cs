@@ -13,9 +13,13 @@ using Rating = Models.Rating;
 
 namespace Client.Controllers
 {
-    public class ItemsPageController : PageControllerBase, MainWindowNavigator.NavigationSubscriber
+    public class ItemsPageController : IPageControllerBase
     {
         public Page Page { get; set; }
+        public bool EditButtonActive { get; set; } = true;
+        public bool NewButtonActive { get; set; } = true;
+        public bool SaveButtonActive { get; set; } = false;
+        public bool DeleteButtonActive { get; set; } = true;
         private readonly ItemsPageViewModel _viewModel = new ItemsPageViewModel();
         private readonly ItemServiceClient _itemClient = new ItemServiceClient();
         private readonly CategoryServiceClient _catClient = new CategoryServiceClient();
@@ -27,7 +31,6 @@ namespace Client.Controllers
             _viewModel.DeleteRatingCommand = new RelayCommand(ExecuteDeleteRatingCommand);
             Page = new ItemsPage {DataContext = _viewModel};
             LoadItems();
-            MainWindowNavigator.NavigationSubscribers.Add(this);
         }
 
         private async void LoadItems()
@@ -36,7 +39,6 @@ namespace Client.Controllers
             {
                 ApplicationData.Category = await _catClient.GetAsync(ApplicationData.Category.Id);
                 _viewModel.Items = ApplicationData.Category.Items.ToList();
-                //_viewModel.SelectedItem = null;
             }
         }
 
@@ -58,17 +60,6 @@ namespace Client.Controllers
                 _ratClient.DeleteRating(_viewModel.SelectedRating);
             }
         }
-
-        public void Notify(string navigationTarget)
-        {
-            if (navigationTarget == Page.Title)
-            {
-                LoadItems();
-            }
-        }
-
-        public (bool, bool, bool, bool) ActiveButtons { get; set; } = (true, true, true, true);
-
         public void NewButtonPressed()
         {
             var newItem = new Item()
@@ -83,6 +74,8 @@ namespace Client.Controllers
         public void EditButtonPressed()
         {
             _viewModel.EditMode = !_viewModel.EditMode;
+            NewButtonActive = false;
+            DeleteButtonActive = false;
         }
 
         public async void SaveButtonPressed()
@@ -95,6 +88,14 @@ namespace Client.Controllers
         {
             _itemClient.Delete(_viewModel.SelectedItem);
             LoadItems();
+        }
+
+        public void OnNavigation(string navigationTarget)
+        {
+            if (navigationTarget == Page.Title)
+            {
+                LoadItems();
+            }
         }
     }
 }

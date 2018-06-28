@@ -8,7 +8,7 @@ using Client.Views;
 
 namespace Client.Controllers
 {
-    public class StartPageController : PageControllerBase
+    public class StartPageController : IPageControllerBase
     {
         private StartPageViewModel _viewModel;
         private readonly CategoryServiceClient _client = new CategoryServiceClient();
@@ -35,7 +35,11 @@ namespace Client.Controllers
         }
 
         public Page Page { get; set; }
-        public (bool, bool, bool, bool) ActiveButtons { get; set; }
+        public bool EditButtonActive => false;
+        public bool NewButtonActive => false;
+        public bool SaveButtonActive => false;
+        public bool DeleteButtonActive => false;
+
         public void NewButtonPressed()
         {
             
@@ -52,6 +56,11 @@ namespace Client.Controllers
         }
 
         public void DeleteButtonPressed()
+        {
+            
+        }
+
+        public void OnNavigation(string navigationTarget)
         {
             
         }

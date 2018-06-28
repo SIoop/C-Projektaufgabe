@@ -8,7 +8,7 @@ using Models;
 
 namespace Client.Controllers
 {
-    public class CategoryManagementPageController : PageControllerBase
+    public class CategoryManagementPageController : IPageControllerBase
     {
         private readonly CategoryManagementPageViewModel _viewModel = new CategoryManagementPageViewModel();
         private readonly CategoryServiceClient _client = new CategoryServiceClient();
@@ -26,7 +26,10 @@ namespace Client.Controllers
         }
 
         public Page Page { get; set; }
-        public (bool, bool, bool, bool) ActiveButtons { get; set; }
+        public bool EditButtonActive { get; set; }
+        public bool NewButtonActive { get; set; }
+        public bool SaveButtonActive { get; set; }
+        public bool DeleteButtonActive { get; set; }
         public void NewButtonPressed()
         {
             var cat = new Category();
@@ -47,6 +50,11 @@ namespace Client.Controllers
         public void DeleteButtonPressed()
         {
             _client.Delete(_viewModel.SelectedCategory);
+        }
+
+        public void OnNavigation(string navigationTarget)
+        {
+            
         }
     }
 }
