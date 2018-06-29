@@ -27,24 +27,42 @@ namespace Client.Controllers
 
         public Page Page { get; set; }
         public event MainWindowNavigator.SetButtonStatus ButtonHandler;
-        public bool EditButtonActive { get; set; }
-        public bool NewButtonActive { get; set; }
+        public bool EditButtonActive { get; set; } = true;
+        public bool NewButtonActive { get; set; } = true;
         public bool SaveButtonActive { get; set; }
-        public bool DeleteButtonActive { get; set; }
+        public bool DeleteButtonActive { get; set; } = true;
 
         public void NewButtonPressed()
         {
             var item = new User {Password = "geheim"};
             _viewModel.Users.Add(item);
             _viewModel.SelectedUser = item;
+            EditButtonPressed();
         }
 
-        public void EditButtonPressed() => _viewModel.EditMode = !_viewModel.EditMode;
+        public void EditButtonPressed()
+        {
+            _viewModel.EditMode = !_viewModel.EditMode;
+            if (!_viewModel.EditMode)
+            {
+                NewButtonActive = false;
+                DeleteButtonActive = false;
+                SaveButtonActive = true;
+            }
+            else
+            {
+                NewButtonActive = true;
+                DeleteButtonActive = true;
+                SaveButtonActive = false;
+            }
+            OnButtonHandler();
+        }
 
         public void SaveButtonPressed()
         {
             if (_viewModel.SelectedUser != null)  _client.AddOrUpdateUser((User) _viewModel.SelectedUser);
             LoadItems();
+            EditButtonPressed();
         }
 
         public async void DeleteButtonPressed()
@@ -58,9 +76,9 @@ namespace Client.Controllers
             if(navigationTarget==Page.Title) LoadItems();
         }
 
-        protected virtual void OnButtonHandler(bool a, bool b, bool c, bool d, bool e)
+        protected virtual void OnButtonHandler()
         {
-            ButtonHandler?.Invoke(a, b, c, d, e);
+            ButtonHandler?.Invoke(NewButtonActive, EditButtonActive, SaveButtonActive, DeleteButtonActive, !_viewModel.EditMode);
         }
     }
 }

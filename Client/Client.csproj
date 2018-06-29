@@ -116,6 +116,7 @@
     <Compile Include="Framework\MainWindowNavigator.cs" />
     <Compile Include="Framework\PageControllerBase.cs" />
     <Compile Include="Framework\UIHelper.cs" />
+    <Compile Include="Resources\InverseBooleanConverter.cs" />
     <Compile Include="ViewModels\BestItemsPageViewModel.cs" />
     <Compile Include="ViewModels\CategoryManagementPageViewModel.cs" />
     <Compile Include="ViewModels\FrequentItemsPageViewModel.cs" />

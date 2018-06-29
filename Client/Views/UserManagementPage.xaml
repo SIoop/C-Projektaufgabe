@@ -4,10 +4,14 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Client.Views"
+      xmlns:res="clr-namespace:Client.Resources"
       xmlns:controls="clr-namespace:Client.Controls"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Benutzerverwaltung">
+    <Page.Resources>
+        <res:InverseBooleanConverter x:Key="InverseBooleanConverter"></res:InverseBooleanConverter>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -58,7 +62,7 @@
             <DockPanel Grid.Row="3" Width="300" VerticalAlignment="Center">
                 <Label BorderThickness="0,0,0,3" BorderBrush="DarkGray" Height="30" Width="110">Administrator?</Label>
                 <CheckBox IsChecked="{Binding SelectedUser.IsAdmin}" HorizontalAlignment="Center"
-                          IsHitTestVisible="{Binding EditMode}" />
+                          IsHitTestVisible="{Binding Path=EditMode, Converter={StaticResource InverseBooleanConverter}}" />
             </DockPanel>
         </Grid>
     </Grid>
