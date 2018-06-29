@@ -32,7 +32,7 @@
                     <TextBlock FontSize="18">Neu</TextBlock>
                 </StackPanel>
             </Button>
-            <ToggleButton Margin="5" BorderBrush="#D5D5FE" Background="#EEEFFF" Command="{Binding EditCommand}" IsEnabled="{Binding EditButton}">
+            <ToggleButton Margin="5" BorderBrush="#D5D5FE" Background="#EEEFFF" Name="EditButton" Command="{Binding EditCommand}" IsEnabled="{Binding EditButton}">
                 <StackPanel Orientation="Horizontal">
                     <Image Margin="3" Source="../Resources/Icons/icons8-pencil-96.png" Width="20" />
                     <TextBlock FontSize="18">Bearbeiten</TextBlock>

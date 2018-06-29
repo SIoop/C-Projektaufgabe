@@ -9,11 +9,12 @@ namespace Models
         [DataMember] public int Id { get; set; }
         [DataMember] public string Name { get; set; }
         [DataMember] public int Version { get; set; }
+        [DataMember] public int CategoryId { get; set; }
         [DataMember] public IList<Rating> Ratings { get; set; }
 
         protected bool Equals(Item other)
         {
-            return Id == other.Id && string.Equals(Name, other.Name);
+            return string.Equals(Name, other.Name) && Equals(CategoryId, other.CategoryId);
         }
 
         public override bool Equals(object obj)

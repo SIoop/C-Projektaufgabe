@@ -16,9 +16,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <DockPanel>
-            <DataGrid ItemsSource="{Binding Path=Items, Mode=TwoWay}" AutoGenerateColumns="False" FontSize="18"
+            <DataGrid ItemsSource="{Binding Path=Items, Mode=TwoWay}" AutoGenerateColumns="False" FontSize="18" Name="DataGrid"
                       HorizontalGridLinesBrush="#1E59B2" IsReadOnly="True" IsSynchronizedWithCurrentItem="True"
-                      SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}" SelectionMode="Single">
+                      SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}" SelectionMode="Single" IsEnabled="{Binding EditMode}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}" />
                 </DataGrid.Columns>

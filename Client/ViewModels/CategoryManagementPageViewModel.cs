@@ -33,7 +33,7 @@ namespace Client.ViewModels
             }
         }
 
-        private bool _editMode;
+        private bool _editMode = true;
         private ObservableCollection<Category> _categories;
 
         public bool EditMode

@@ -37,12 +37,13 @@ namespace Client.Controllers
             _view.ShowDialog();
         }
 
-        private void SetButtons(bool newButton, bool editButton, bool saveButton, bool deleteButton)
+        private void SetButtons(bool newButton, bool editButton, bool saveButton, bool deleteButton, bool editMode)
         {
             _viewModel.NewButton = newButton;
             _viewModel.EditButton = editButton;
             _viewModel.SaveButton = saveButton;
             _viewModel.DeleteButton = deleteButton;
+            _view.EditButton.IsChecked = editMode;
         }
 
         private static void RegisterControllers()

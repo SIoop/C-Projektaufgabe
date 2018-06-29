@@ -14,7 +14,7 @@ namespace Client.Framework
     {
         public static Page CurrentNavStatus { get; set; }
 
-        public delegate void SetButtonStatus(bool a, bool b, bool c, bool d);
+        public delegate void SetButtonStatus(bool a, bool b, bool c, bool d, bool e);
 
         public static SetButtonStatus ButtonMethod { get; set; }
 
@@ -27,17 +27,17 @@ namespace Client.Framework
         public static Page StartPage;
         public static ObservableCollection<Page> AdminPages;
 
-        public static List<NavigationSubscriber> NavigationSubscribers = new List<NavigationSubscriber>();
-
         public static (ObservableCollection<Page>, ObservableCollection<Page>) InitializePages()
         {
             UserPageControllers[0].Initialize();
+            UserPageControllers[0].ButtonHandler += ButtonMethod;
             UserPages.Add(UserPageControllers[0].Page);
             StartPage = UserPages[0];
 
             AdminPages = new ObservableCollection<Page>(AdminPageControllers.Select(c =>
             {
                 c.Initialize();
+                c.ButtonHandler += ButtonMethod;
                 return c.Page;
             }).ToList());
 
@@ -51,21 +51,19 @@ namespace Client.Framework
 
 
             var foundPage = userPage ?? adminPage;
-            NavigationSubscribers.ForEach(s => s.Notify((foundPage).Title));
 
             NavFrame.Navigate(foundPage);
             var controller = UserPageControllers.Find(c =>
                                  Equals(c.Page, UserPages.ToList().Find(p => p.Title == foundPage.Title))) ??
                              AdminPageControllers.Find(c =>
                                  Equals(c.Page, AdminPages.ToList().Find(p => p.Title == foundPage.Title)));
-            ButtonMethod.Invoke(controller.NewButtonActive, controller.EditButtonActive, controller.SaveButtonActive, controller.DeleteButtonActive);
+            ButtonMethod.Invoke(controller.NewButtonActive, controller.EditButtonActive, controller.SaveButtonActive, controller.DeleteButtonActive, false);
 
             CurrentNavStatus = foundPage;
         }
 
         public static void NavigateToFirstPage()
         {
-            NavigationSubscribers.ForEach(s => s.Notify(UserPages[0].Title));
             NavFrame.Navigate(UserPages[0]);
 
             CurrentNavStatus = UserPages[0];
@@ -76,6 +74,7 @@ namespace Client.Framework
             UserPageControllers.GetRange(1, UserPageControllers.Count - 1).ForEach(c =>
             {
                 c.Initialize();
+                c.ButtonHandler += ButtonMethod;
                 UserPages.Add(c.Page);
             });
         }
@@ -112,9 +111,9 @@ namespace Client.Framework
             foundController.DeleteButtonPressed();
         }
 
-        public interface NavigationSubscriber
+        public static void OnButtonChange(bool a, bool b, bool c, bool d)
         {
-            void Notify(string navigationTarget);
+
         }
     }
 }

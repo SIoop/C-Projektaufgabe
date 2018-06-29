@@ -11,6 +11,8 @@ namespace Server.Mapping
 
             Map(x => x.Name).Length(100).Not.Nullable();
 
+            Map(x => x.CategoryId).Not.Nullable();
+
             HasMany(x => x.Ratings).KeyColumn("ItemId").Cascade.All().Inverse();
         }
     }

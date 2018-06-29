@@ -4,6 +4,8 @@ using Client.Annotations;
 
 namespace Client.Framework
 {
+    
+
     public class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

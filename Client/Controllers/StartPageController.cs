@@ -35,6 +35,7 @@ namespace Client.Controllers
         }
 
         public Page Page { get; set; }
+        public event MainWindowNavigator.SetButtonStatus ButtonHandler;
         public bool EditButtonActive => false;
         public bool NewButtonActive => false;
         public bool SaveButtonActive => false;
@@ -63,6 +64,11 @@ namespace Client.Controllers
         public void OnNavigation(string navigationTarget)
         {
             
+        }
+
+        protected virtual void OnButtonHandler(bool a, bool b, bool c, bool d, bool e)
+        {
+            ButtonHandler?.Invoke(a, b, c, d, e);
         }
     }
 }

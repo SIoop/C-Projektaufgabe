@@ -15,6 +15,8 @@ namespace Client.Controllers
         private readonly BestItemsPageViewModel _viewModel = new BestItemsPageViewModel();
         private readonly ItemServiceClient _client = new ItemServiceClient();
 
+        public event MainWindowNavigator.SetButtonStatus ButtonHandler;
+
         public void Initialize()
         {
             LoadItems();
@@ -39,12 +41,22 @@ namespace Client.Controllers
         public bool NewButtonActive { get; set; }
         public bool SaveButtonActive { get; set; }
         public bool DeleteButtonActive { get; set; }
-        public (bool, bool, bool, bool) ActiveButtons { get; set; }
 
-        public void NewButtonPressed(){}
-        public void EditButtonPressed(){}
-        public void SaveButtonPressed(){}
-        public void DeleteButtonPressed(){}
+        public void NewButtonPressed()
+        {
+        }
+
+        public void EditButtonPressed()
+        {
+        }
+
+        public void SaveButtonPressed()
+        {
+        }
+
+        public void DeleteButtonPressed()
+        {
+        }
 
         public void OnNavigation(string navigationTarget)
         {
@@ -52,6 +64,11 @@ namespace Client.Controllers
             {
                 LoadItems();
             }
+        }
+
+        protected virtual void OnButtonHandler(bool a, bool b, bool c, bool d, bool e)
+        {
+            ButtonHandler?.Invoke(a, b, c, d, e);
         }
     }
 }

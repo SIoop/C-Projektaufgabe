@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Client.Framework;
 using Models;
@@ -8,9 +7,18 @@ namespace Client.ViewModels
 {
     public class ItemsPageViewModel : ViewModelBase
     {
-        private List<Item> _items;
+        private ICommand _deleteRatingCommand;
 
-        public List<Item> Items
+        private bool _editMode = true;
+        private ObservableCollection<Item> _items;
+
+        private ICommand _rateCommand;
+
+        private Item _selectedItem;
+
+        private Rating _selectedRating;
+
+        public ObservableCollection<Item> Items
         {
             get => _items;
             set
@@ -19,8 +27,6 @@ namespace Client.ViewModels
                 OnPropertyChanged();
             }
         }
-
-        private Item _selectedItem;
 
         public Item SelectedItem
         {
@@ -32,8 +38,6 @@ namespace Client.ViewModels
             }
         }
 
-        private Rating _selectedRating;
-
         public Rating SelectedRating
         {
             get => _selectedRating;
@@ -43,9 +47,6 @@ namespace Client.ViewModels
                 OnPropertyChanged();
             }
         }
-
-
-        private bool _editMode = true;
 
         public bool EditMode
         {
@@ -57,8 +58,6 @@ namespace Client.ViewModels
             }
         }
 
-        private ICommand _rateCommand;
-
         public ICommand RateCommand
         {
             get => _rateCommand;
@@ -68,8 +67,6 @@ namespace Client.ViewModels
                 OnPropertyChanged();
             }
         }
-
-        private ICommand _deleteRatingCommand;
 
         public ICommand DeleteRatingCommand
         {
