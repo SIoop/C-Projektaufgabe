@@ -45,10 +45,8 @@ namespace Test
         [TestMethod]
         public void RatingWindowInitTest()
         {
-            var con = new RateWindowController();
-            con.Initialize();
-            Assert.IsNotNull(con.View);
-            con.View.Close();
+            var success = _ratTestService.DeleteRating(_mockRating);
+            Assert.IsTrue(success);
         }
 
         [TestMethod]
@@ -68,7 +66,15 @@ namespace Test
         [TestMethod]
         public void RateCancelTest()
         {
+            var success = _ratTestService.AddRating(_mockRating);
+            Assert.IsTrue(success);
+        }
 
+        [TestMethod]
+        public void RatingCorrectScoreTest()
+        {
+            var success = _ratTestService.AddRating(_mockRating);
+            Assert.IsTrue(_mockRating.Score < 6);
         }
     }
 }

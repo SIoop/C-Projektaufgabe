@@ -26,6 +26,12 @@ namespace Client.RatingProxy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRatingService/AddRating", ReplyAction="http://tempuri.org/IRatingService/AddRatingResponse")]
         System.Threading.Tasks.Task<bool> AddRatingAsync(Models.Rating rating);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRatingService/GetAll", ReplyAction="http://tempuri.org/IRatingService/GetAllResponse")]
+        System.Collections.Generic.List<Models.Rating> GetAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRatingService/GetAll", ReplyAction="http://tempuri.org/IRatingService/GetAllResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Rating>> GetAllAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -69,6 +75,14 @@ namespace Client.RatingProxy {
         
         public System.Threading.Tasks.Task<bool> AddRatingAsync(Models.Rating rating) {
             return base.Channel.AddRatingAsync(rating);
+        }
+        
+        public System.Collections.Generic.List<Models.Rating> GetAll() {
+            return base.Channel.GetAll();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Rating>> GetAllAsync() {
+            return base.Channel.GetAllAsync();
         }
     }
 }

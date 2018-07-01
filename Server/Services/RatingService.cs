@@ -12,5 +12,10 @@ namespace Server.Services
         public bool DeleteRating(Rating rating) => Manager.Delete(rating);
 
         public bool AddRating(Rating rating) => Manager.SaveOrUpdate(rating);
+
+        public List<Rating> GetAll()
+        {
+            return Manager.GetAll();
+        }
     }
 }

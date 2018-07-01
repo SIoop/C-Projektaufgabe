@@ -10,8 +10,9 @@ namespace Backend.Mapping
 
             Map(x => x.Comment).Length(100);
             Map(x => x.Score).Not.Nullable().Default("1");
+            Map(x => x.ItemId);
 
-            References(x => x.User).Column("UserId").Not.Nullable().Cascade.All();
+            References(x => x.User).Column("UserId").Not.Nullable().Cascade.None();
         }
     }
 }

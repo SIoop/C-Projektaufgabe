@@ -103,6 +103,7 @@
     </Compile>
     <Compile Include="Controllers\BestItemsPageController.cs" />
     <Compile Include="Controllers\CategoryManagementPageController.cs" />
+    <Compile Include="Controllers\ChangePasswordWindowController.cs" />
     <Compile Include="Controllers\FrequentItemsPageController.cs" />
     <Compile Include="Controllers\ItemsPageController.cs" />
     <Compile Include="Controllers\RateWindowController.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Resources\InverseBooleanConverter.cs" />
     <Compile Include="ViewModels\BestItemsPageViewModel.cs" />
     <Compile Include="ViewModels\CategoryManagementPageViewModel.cs" />
+    <Compile Include="ViewModels\ChangePasswordWindowViewModel.cs" />
     <Compile Include="ViewModels\FrequentItemsPageViewModel.cs" />
     <Compile Include="ViewModels\ItemsPageViewModel.cs" />
     <Compile Include="ViewModels\RateWindowViewModel.cs" />
@@ -129,6 +131,9 @@
     </Compile>
     <Compile Include="Views\CategoryManagementPage.xaml.cs">
       <DependentUpon>CategoryManagementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChangePasswordWindow.xaml.cs">
+      <DependentUpon>ChangePasswordWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FrequentItemsPage.xaml.cs">
       <DependentUpon>FrequentItemsPage.xaml</DependentUpon>
@@ -157,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CategoryManagementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChangePasswordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -12,5 +12,8 @@ namespace Server.Contracts
 
         [OperationContract]
         bool AddRating(Rating rating);
+
+        [OperationContract]
+        List<Rating> GetAll();
     }
 }

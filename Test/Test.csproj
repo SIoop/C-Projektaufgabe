@@ -93,77 +93,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BestRatingsTest.cs" />
     <Compile Include="CategoryManagementTest.cs" />
     <Compile Include="ItemsTest.cs" />
+    <Compile Include="MostFrequentRatedTest.cs" />
     <Compile Include="RateItemTest.cs" />
     <Compile Include="StartPageTest.cs" />
     <Compile Include="ChangePasswordTest.cs" />
-    <Compile Include="Connected Services\CategoryProxy\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\ItemProxy\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\RatingProxy\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\UserProxy\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="LoginTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserManagementTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Connected Services\CategoryProxy\Models.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CategoryProxy\service.wsdl" />
-    <None Include="Connected Services\CategoryProxy\service.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CategoryProxy\service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ItemProxy\Models.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ItemProxy\service.wsdl" />
-    <None Include="Connected Services\ItemProxy\service.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ItemProxy\service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\RatingProxy\Models.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\RatingProxy\service.wsdl" />
-    <None Include="Connected Services\RatingProxy\service.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\RatingProxy\service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\UserProxy\Models.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\UserProxy\service.wsdl" />
-    <None Include="Connected Services\UserProxy\service.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\UserProxy\service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Models.Category.datasource" />
     <None Include="Properties\DataSources\Models.Item.datasource" />
@@ -186,60 +128,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\CategoryProxy\" />
-    <WCFMetadataStorage Include="Connected Services\ItemProxy\" />
-    <WCFMetadataStorage Include="Connected Services\RatingProxy\" />
-    <WCFMetadataStorage Include="Connected Services\UserProxy\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\CategoryProxy\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\CategoryProxy\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\CategoryProxy\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ItemProxy\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ItemProxy\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ItemProxy\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\RatingProxy\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\RatingProxy\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\RatingProxy\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\UserProxy\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\UserProxy\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\UserProxy\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

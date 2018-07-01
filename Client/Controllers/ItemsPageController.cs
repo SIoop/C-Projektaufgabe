@@ -67,9 +67,9 @@ namespace Client.Controllers
             UpdateButtons();
         }
 
-        public async void SaveButtonPressed()
+        public void SaveButtonPressed()
         {
-            await _itemClient.SaveOrUpdateAsync(_viewModel.SelectedItem);
+            _itemClient.SaveOrUpdate(_viewModel.SelectedItem);
             EditButtonPressed();
             LoadItems();
         }
@@ -98,8 +98,8 @@ namespace Client.Controllers
             var item = con.Initialize();
             if (item != null)
             {
-                var list = new List<Rating>(_viewModel.SelectedItem.Ratings) {item};
-                _viewModel.SelectedItem.Ratings = list;
+                item.ItemId = _viewModel.SelectedItem.Id;
+                _ratClient.AddRating(item);
                 LoadItems();
             }
         }
@@ -107,6 +107,8 @@ namespace Client.Controllers
         private void ExecuteDeleteRatingCommand(object obj)
         {
             if (_viewModel.SelectedRating != null) _ratClient.DeleteRating(_viewModel.SelectedRating);
+            _viewModel.SelectedRating = null;
+            LoadItems();
         }
 
         private void UpdateButtons()

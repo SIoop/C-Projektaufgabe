@@ -17,7 +17,7 @@ namespace Client.Controllers
                 RateCommand = new RelayCommand(ExecuteRateCommand),
                 CancelCommand = new RelayCommand(ExecuteCancelCommand)
             };
-            View = new RateWindow() {DataContext = _viewModel};
+            View = new RateWindow {DataContext = _viewModel};
             View.ShowDialog();
             return _viewModel.Rating;
         }

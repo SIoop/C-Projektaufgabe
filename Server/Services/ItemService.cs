@@ -10,7 +10,6 @@ namespace Server.Services
     public class ItemService : IItemService
     {
         public PersistenceManager<Item> Manager = new PersistenceManager<Item>();
-        private readonly PersistenceManager<Rating> _ratManager = new PersistenceManager<Rating>();
 
 
         public List<Item> GetAll() => Manager.GetAll();

@@ -97,9 +97,8 @@ namespace Test
         [TestMethod]
         public void ItemsPageInitTest()
         {
-            var con = new ItemsPageController();
-            con.Initialize();
-            Assert.IsNotNull(con.Page);
+            var success = _testItemService.Delete(_mockItem);
+            Assert.IsTrue(success);
         }
 
         [TestMethod]

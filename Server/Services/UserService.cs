@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using BCrypt.Net;
 using Models;
 using Server.Contracts;
 using Server.Managers;
@@ -18,6 +20,22 @@ namespace Server.Services
             user.Username = user.Username.ToLower();
             var foundUser = GetUser(user.Id);
             if (foundUser == null) user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            return Manager.SaveOrUpdate(user);
+        }
+
+        public bool ChangePassword(User user, string oldPassword, string newPassword)
+        {
+            string newhash = "";
+            try
+            {
+                newhash = BCrypt.Net.BCrypt.ValidateAndReplacePassword(oldPassword, user.Password, newPassword);
+            }
+            catch (BcryptAuthenticationException e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            user.Password = newhash;
             return Manager.SaveOrUpdate(user);
         }
 

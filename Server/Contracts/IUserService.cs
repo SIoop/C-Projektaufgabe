@@ -11,6 +11,9 @@ namespace Server.Contracts
         User GetUser(int id);
 
         [OperationContract]
+        bool ChangePassword(User user, string oldPassword, string newPassword);
+
+        [OperationContract]
         List<User> GetAllUsers();
 
         [OperationContract]

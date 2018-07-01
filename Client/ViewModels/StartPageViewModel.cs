@@ -12,6 +12,19 @@ namespace Client.ViewModels
 
         public List<Category> Categories { get; set; }
 
+        private ICommand _passwordResetCommand;
+
+        public ICommand PasswordResetCommand
+        {
+            get { return _passwordResetCommand; }
+            set
+            {
+                _passwordResetCommand = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         public ICommand CategorySelectedCommand { get; set; }
 
         public Category SelectedCategory { get; set; }

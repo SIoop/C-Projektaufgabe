@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
 using Client.Framework;
+using Client.RatingProxy;
 using Client.UserProxy;
 using Client.ViewModels;
 using Client.Views;
@@ -67,8 +69,24 @@ namespace Client.Controllers
 
         public async void DeleteButtonPressed()
         {
-            if (_viewModel.SelectedUser != null) await _client.DeleteUserAsync(_viewModel.SelectedUser);
+            if (_viewModel.SelectedUser != null)
+            {
+                if (HasUserRatings(_viewModel.SelectedUser))
+                {
+                    MessageBox.Show("Der Benutzer besitzt noch Bewertungen, er kann deswegen nicht gelöscht werden.");
+                    return;
+                }
+                await _client.DeleteUserAsync(_viewModel.SelectedUser);
+            }
+
             LoadItems();
+        }
+
+        private bool HasUserRatings(User user)
+        {
+            RatingServiceClient client = new RatingServiceClient();
+            var ratings = client.GetAll().FindAll(r => r.User.Id == user.Id);
+            return ratings.Count != 0;
         }
 
         public void OnNavigation(string navigationTarget)

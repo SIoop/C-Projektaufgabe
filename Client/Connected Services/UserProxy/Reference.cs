@@ -21,6 +21,12 @@ namespace Client.UserProxy {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUser", ReplyAction="http://tempuri.org/IUserService/GetUserResponse")]
         System.Threading.Tasks.Task<Models.User> GetUserAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/ChangePassword", ReplyAction="http://tempuri.org/IUserService/ChangePasswordResponse")]
+        bool ChangePassword(Models.User user, string oldPassword, string newPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/ChangePassword", ReplyAction="http://tempuri.org/IUserService/ChangePasswordResponse")]
+        System.Threading.Tasks.Task<bool> ChangePasswordAsync(Models.User user, string oldPassword, string newPassword);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetAllUsers", ReplyAction="http://tempuri.org/IUserService/GetAllUsersResponse")]
         System.Collections.Generic.List<Models.User> GetAllUsers();
         
@@ -79,6 +85,14 @@ namespace Client.UserProxy {
         
         public System.Threading.Tasks.Task<Models.User> GetUserAsync(int id) {
             return base.Channel.GetUserAsync(id);
+        }
+        
+        public bool ChangePassword(Models.User user, string oldPassword, string newPassword) {
+            return base.Channel.ChangePassword(user, oldPassword, newPassword);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ChangePasswordAsync(Models.User user, string oldPassword, string newPassword) {
+            return base.Channel.ChangePasswordAsync(user, oldPassword, newPassword);
         }
         
         public System.Collections.Generic.List<Models.User> GetAllUsers() {

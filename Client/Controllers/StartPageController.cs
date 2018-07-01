@@ -18,10 +18,11 @@ namespace Client.Controllers
             _viewModel = new StartPageViewModel
             {
                 Categories = _client.GetAll().ToList(),
-                CategorySelectedCommand = new RelayCommand(ExecuteCategorySelectedCommand)
+                CategorySelectedCommand = new RelayCommand(ExecuteCategorySelectedCommand),
+                PasswordResetCommand = new RelayCommand(ExecutePasswordResetCommand)
             };
 
-            Page = new StartPage { DataContext = _viewModel };
+            Page = new StartPage { DataContext = _viewModel, };
         }
 
         private void ExecuteCategorySelectedCommand(object obj)
@@ -32,6 +33,11 @@ namespace Client.Controllers
                 MainWindowNavigator.EnableAllUserPages();
             }
             MainWindowNavigator.NavigateTo(MainWindowNavigator.UserPageControllers[1].Page.Title);
+        }
+
+        private void ExecutePasswordResetCommand(object obj)
+        {
+            new ChangePasswordWindowController().Initialize();
         }
 
         public Page Page { get; set; }

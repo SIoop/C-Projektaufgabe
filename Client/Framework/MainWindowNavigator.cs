@@ -60,6 +60,7 @@ namespace Client.Framework
             ButtonMethod.Invoke(controller.NewButtonActive, controller.EditButtonActive, controller.SaveButtonActive, controller.DeleteButtonActive, false);
 
             CurrentNavStatus = foundPage;
+            OnNavigationAlert(CurrentNavStatus.Title);
         }
 
         public static void NavigateToFirstPage()
@@ -67,7 +68,26 @@ namespace Client.Framework
             NavFrame.Navigate(UserPages[0]);
 
             CurrentNavStatus = UserPages[0];
+            OnNavigationAlert(CurrentNavStatus.Title);
         }
+
+        private static void OnNavigationAlert(string target)
+        {
+            UserPageControllers.ForEach(c =>
+            {
+                if (c.Page != null)
+                {
+                    c.OnNavigation(target);
+                }
+            });
+            AdminPageControllers.ForEach(c =>
+            {
+                if (c.Page != null)
+                {
+                    c.OnNavigation(target);
+                }
+            });
+        } 
 
         public static void EnableAllUserPages()
         {

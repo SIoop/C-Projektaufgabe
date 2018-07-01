@@ -83,9 +83,8 @@ namespace Test
         [TestMethod]
         public void StartPageInitTest()
         {
-            var con = new StartPageController();
-            con.Initialize();
-            Assert.IsNotNull(con.Page);
+            var cat = _catTestService.Get(_catMock.Id);
+            Assert.AreEqual(_catMock.Items, cat.Items);
         }
 
         [TestMethod]

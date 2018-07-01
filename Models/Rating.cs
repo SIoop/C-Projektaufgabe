@@ -10,6 +10,7 @@ namespace Models
         [DataMember] public string Comment { get; set; }
         [DataMember] public int Version { get; set; }
         [DataMember] public User User { get; set; }
+        [DataMember] public int ItemId { get; set; }
 
         protected bool Equals(Rating other)
         {
